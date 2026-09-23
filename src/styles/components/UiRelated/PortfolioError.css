@@ -1,0 +1,21 @@
+@import '../../globals.css';
+
+.error-container {
+    @apply flex flex-1 min-h-screen items-center justify-center p-6;
+}
+
+.error-card {
+    @apply flex max-w-md flex-col items-center rounded-xl border border-red-500/30 bg-red-950/20 p-8 text-center backdrop-blur-md;
+}
+
+.error-icon {
+    @apply h-12 w-12 text-red-500 mb-4;
+}
+
+.error-title {
+    @apply text-lg font-bold text-red-500;
+}
+
+.error-message {
+    @apply mt-2 text-sm text-red-200/80;
+}

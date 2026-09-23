@@ -1,0 +1,137 @@
+@import '../../globals.css';
+
+.gradient-bg {
+    @apply relative isolate flex min-h-full flex-1 flex-col bg-c1 text-c5 selection:bg-c5 selection:text-c1;
+}
+
+.gradient-layer {
+    @apply pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-c1;
+}
+
+.gradient-orb {
+    @apply absolute rounded-full opacity-0 blur-[70px] will-change-[transform,opacity];
+}
+
+.orb-one {
+    @apply -top-1/4 -left-[15%] h-[65vmax] w-[65vmax];
+
+    background: radial-gradient(
+        circle,
+        color-mix(in oklab, var(--color-c4) 45%, transparent) 0%,
+        transparent 65%
+    );
+    animation:
+        orb-fade-in 2.5s ease-out forwards,
+        orb-drift-one 12s ease-in-out infinite alternate;
+}
+
+.orb-two {
+    @apply top-0 -right-1/4 h-[60vmax] w-[60vmax];
+
+    background: radial-gradient(
+        circle,
+        color-mix(in oklab, var(--color-c3) 90%, transparent) 0%,
+        transparent 65%
+    );
+    animation:
+        orb-fade-in 2.5s 0.3s ease-out forwards,
+        orb-drift-two 15s ease-in-out infinite alternate;
+}
+
+.orb-three {
+    @apply -bottom-[30%] left-1/5 h-[55vmax] w-[55vmax];
+
+    background: radial-gradient(
+        circle,
+        color-mix(in oklab, var(--color-c5) 22%, transparent) 0%,
+        transparent 65%
+    );
+    animation:
+        orb-fade-in 2.5s 0.6s ease-out forwards,
+        orb-drift-three 18s ease-in-out infinite alternate;
+}
+
+.gradient-grain {
+    @apply absolute -inset-1/2 opacity-[0.09];
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain-shift 1s steps(6) infinite;
+}
+
+@keyframes orb-fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes orb-drift-one {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(40vw, 10vh, 0) scale(1.2);
+    }
+    100% {
+        transform: translate3d(20vw, 40vh, 0) scale(1.4);
+    }
+}
+
+@keyframes orb-drift-two {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1.1);
+    }
+    50% {
+        transform: translate3d(-35vw, 30vh, 0) scale(0.9);
+    }
+    100% {
+        transform: translate3d(-15vw, 55vh, 0) scale(1.2);
+    }
+}
+
+@keyframes orb-drift-three {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.9);
+    }
+    50% {
+        transform: translate3d(-30vw, -20vh, 0) scale(1.3);
+    }
+    100% {
+        transform: translate3d(25vw, -45vh, 0) scale(1);
+    }
+}
+
+@keyframes grain-shift {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(-4%, 3%);
+    }
+    40% {
+        transform: translate(3%, -5%);
+    }
+    60% {
+        transform: translate(-5%, -2%);
+    }
+    80% {
+        transform: translate(4%, 4%);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .orb-one {
+        animation-duration: 2.5s, 36s;
+    }
+    .orb-two {
+        animation-duration: 2.5s, 45s;
+    }
+    .orb-three {
+        animation-duration: 2.5s, 54s;
+    }
+    .gradient-grain {
+        animation: none;
+    }
+}

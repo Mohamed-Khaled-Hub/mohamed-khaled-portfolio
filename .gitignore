@@ -14,7 +14,7 @@
 /coverage
 
 # IDE
-
+/.idea
 
 # next.js
 /.next/

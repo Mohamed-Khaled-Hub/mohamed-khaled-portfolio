@@ -1,0 +1,32 @@
+@import '../../globals.css';
+
+.loading-container {
+    @apply flex flex-1 min-h-screen items-center justify-center;
+}
+
+.loading-content {
+    @apply flex flex-col items-center space-y-4;
+}
+
+.loading-spinner-wrapper {
+    @apply relative flex items-center justify-center;
+}
+
+.loading-glow {
+    @apply absolute h-16 w-16 rounded-full blur-xl;
+    background-color: var(--color-c5);
+    opacity: 0.1 !important;
+}
+
+.loading-svg {
+    @apply h-12 w-12;
+}
+
+.loading-track {
+    stroke: var(--color-c3);
+    opacity: 0.4;
+}
+
+.loading-message {
+    @apply text-c4 text-sm font-medium;
+}

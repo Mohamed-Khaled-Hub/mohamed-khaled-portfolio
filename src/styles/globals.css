@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-c1: #09090b;
+    --color-c2: #18181b;
+    --color-c3: #3f3f46;
+    --color-c4: #a1a1aa;
+    --color-c5: #f4f4f5;
+}
+
+html {
+    @apply h-full antialiased;
+}
+
+body {
+    @apply min-h-full flex flex-col bg-c1;
+}

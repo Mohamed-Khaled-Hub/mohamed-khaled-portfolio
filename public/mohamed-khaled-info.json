@@ -1,0 +1,241 @@
+{
+    "personal": {
+        "name": "Mohamed Khaled Mohamed Gaber",
+        "title": "Full Stack Developer | Software Engineer",
+        "location": "Alexandria, Egypt",
+        "phone": "+20 127 354 4169",
+        "email": "mohameddkhaled980@gmail.com",
+        "linkedin": "https://linkedin.com/in/mohamed-k-7bb520380",
+        "github": "https://github.com/Mohamed-Khaled-Hub"
+    },
+
+    "summary": "Full Stack Developer and Software Engineer with a bachelor's degree in Computer Science and over a year of professional software development experience across the full lifecycle: requirements, software design, coding, software testing, and support. Builds web applications with TypeScript, Node.js, NestJS, Next.js, React, and MongoDB, secured with JWT, OAuth2, and role-based access control. Strong problem-solving, communication, and team coordination skills in Agile teams.",
+
+    "education": [
+        {
+            "degree": "Bachelor's Degree in Computer Science",
+            "institution": "Alexandria University, Faculty of Computing and Data Science",
+            "startDate": "2021-09",
+            "endDate": "2025-06",
+            "location": "Alexandria, Egypt",
+            "cgpa": "3.09/4.00",
+            "grade": "B+ (Very Good)"
+        }
+    ],
+
+    "experience": [
+        {
+            "position": "Full Stack Developer (Freelance)",
+            "company": "Clinova Clinic Management System",
+            "type": "Freelance",
+            "startDate": "2026-05",
+            "endDate": "2026-08",
+            "location": "Remote",
+            "description": [
+                "Led client meetings with clinic staff to turn user requirements into technical specifications and a phased delivery plan for 13 modules.",
+                "Developed a clinic management platform with NestJS, Next.js, TypeScript, and MongoDB, designing and documenting 50+ RESTful endpoints and 9 Mongoose schemas in Swagger/OpenAPI.",
+                "Secured the API with JWT authentication and role-based access control via NestJS Guards for 4 roles, replacing paper-based workflows.",
+                "Built a responsive 25-view dashboard with the Next.js App Router and Tailwind CSS, resolving defects raised in client acceptance testing."
+            ]
+        },
+        {
+            "position": "AI Data Trainer (Freelance)",
+            "company": "AI Model Training Platforms",
+            "type": "Freelance",
+            "startDate": "2025-11",
+            "endDate": "2026-04",
+            "location": "Remote",
+            "description": [
+                "Trained and evaluated LLMs on code generation and general generation tasks across multiple AI training platforms, performing data annotation and quality review on 100+ tasks.",
+                "Deepened backend and AI engineering skills beyond the graduation curriculum, including NestJS, FastAPI, LangChain, RAG, and Neo4j, then applied them to 3 self-directed full-stack projects with 80+ combined API endpoints."
+            ]
+        },
+        {
+            "position": "Software Developer Intern",
+            "company": "Cyber Guard X",
+            "type": "Internship",
+            "startDate": "2025-08",
+            "endDate": "2025-10",
+            "location": "Alexandria, Egypt",
+            "description": [
+                "Coordinated with a 5-developer Agile team on 2 client projects over 3 months, using Git feature branches and 10+ peer-reviewed pull requests.",
+                "Developed the Cyber Guard Academy platform with Next.js, React, TypeScript, and Tailwind CSS, integrating the Calendly API to automate appointment scheduling.",
+                "Delivered 10 full-stack features for a travel agency platform using Node.js, Express.js, and MongoDB, and configured Google OAuth2 sign-in.",
+                "Ran manual quality assurance and error detection before each release, diagnosing and fixing API and cross-browser defects."
+            ]
+        },
+        {
+            "position": "Front-End Developer (Freelance)",
+            "company": "Whiff E-commerce Store",
+            "type": "Freelance",
+            "startDate": "2025-05",
+            "endDate": "2025-07",
+            "location": "Remote",
+            "description": [
+                "Launched a mobile-first, headless e-commerce storefront using Next.js, TypeScript, and Tailwind CSS, integrated with the Shopify Storefront API for product, inventory, and order data.",
+                "Implemented asynchronous cart and checkout against Shopify with React hooks and GraphQL mutations, eliminating full page reloads and improving SEO with Server Components."
+            ]
+        }
+    ],
+
+    "projects": [
+        {
+            "name": "FCDS Mentor",
+            "subtitle": "University RAG System",
+            "technologies": [
+                "Next.js",
+                "TypeScript",
+                "FastAPI",
+                "LangChain",
+                "Gemini AI",
+                "SQLite"
+            ],
+            "links": {
+                "githubFrontend": "https://github.com/Mohamed-Khaled-Hub/fcds-mentor-frontend",
+                "githubBackend": "https://github.com/Mohamed-Khaled-Hub/fcds-mentor-backend"
+            },
+            "description": [
+                "Designed an LLM-powered academic advisor with Gemini AI answering student questions from 2 official university regulation PDFs.",
+                "Developed a FastAPI and LangChain RAG pipeline, tested and tuned to 98% context retrieval accuracy on a 200-question test set.",
+                "Enforced RBAC for 2 roles across 4 academic years to target notifications by role and year."
+            ]
+        },
+        {
+            "name": "WatchNext",
+            "subtitle": "Graph-Based Movie Recommendation App",
+            "technologies": [
+                "Next.js",
+                "TypeScript",
+                "NestJS",
+                "CognoDB",
+                "Neo4j",
+                "Tailwind CSS"
+            ],
+            "links": {
+                "liveDemo": "https://watchnext-frontend-three.vercel.app/",
+                "githubFrontend": "https://github.com/Mohamed-Khaled-Hub/watchnext-frontend",
+                "githubBackend": "https://github.com/Mohamed-Khaled-Hub/watchnext-backend"
+            },
+            "description": [
+                "Developed a movie discovery platform with graph-based recommendations, modeling actor-director connections and user taste graphs in Neo4j with Cypher.",
+                "Structured a modular NestJS backend with 20+ JWT-protected endpoints and parameterized Cypher queries to prevent injection."
+            ]
+        },
+        {
+            "name": "Restaurant Management & Recommendation API",
+            "subtitle": "Restaurant Management & Recommendation API",
+            "technologies": [
+                "NestJS",
+                "TypeScript",
+                "MongoDB",
+                "Mongoose",
+                "Jest",
+                "Postman"
+            ],
+            "links": {
+                "github": "https://github.com/Mohamed-Khaled-Hub/restaurant-management"
+            },
+            "description": [
+                "Built a RESTful NestJS API with 14 endpoints and DTO validation, covered by Jest unit and integration tests.",
+                "Created a 4-stage MongoDB aggregation pipeline ranking restaurants by cuisine, ratings, and popularity, with 2dsphere location search."
+            ]
+        }
+    ],
+
+    "skills": {
+        "languages": [
+            "TypeScript",
+            "JavaScript",
+            "Python",
+            "Java",
+            "C#",
+            "SQL"
+        ],
+        "frontEnd": [
+            "React",
+            "Next.js",
+            "Tailwind CSS",
+            "HTML5",
+            "CSS3",
+            "Responsive Web Design"
+        ],
+        "backEnd": [
+            "Node.js",
+            "NestJS",
+            "Express.js",
+            "FastAPI",
+            "RESTful APIs",
+            "GraphQL",
+            "API Design",
+            "Swagger/OpenAPI",
+            "Shopify Storefront API"
+        ],
+        "databases": [
+            "PostgreSQL",
+            "MySQL",
+            "SQLite",
+            "MongoDB (Mongoose)",
+            "Neo4j (Cypher)",
+            "CognoDB"
+        ],
+        "cloudAndDevOps": [
+            "AWS (EC2, S3)",
+            "Docker",
+            "CI/CD (GitHub Actions)",
+            "Git",
+            "Vercel"
+        ],
+        "testingAndQA": [
+            "Software Testing (Unit, Integration)",
+            "Jest",
+            "Supertest",
+            "Debugging",
+            "Error Detection",
+            "Code Review",
+            "Postman"
+        ],
+        "practices": [
+            "Software Development Lifecycle",
+            "Software Design",
+            "OOP",
+            "Modular Architecture",
+            "Dependency Injection",
+            "Schema Design",
+            "Requirements Analysis",
+            "Technical Documentation",
+            "Agile/Scrum"
+        ],
+        "security": ["JWT", "OAuth2", "Role-Based Access Control (RBAC)"],
+        "ai": [
+            "Generative AI",
+            "Large Language Models (LLMs)",
+            "Model Training & Evaluation",
+            "Data Annotation",
+            "Retrieval-Augmented Generation (RAG)",
+            "LangChain",
+            "Gemini AI"
+        ],
+        "professional": [
+            "Problem Solving",
+            "Communication",
+            "Team Coordination",
+            "Client Meetings",
+            "Analytical Thinking",
+            "Organizational and Planning Skills"
+        ]
+    },
+
+    "additionalInformation": {
+        "militaryStatus": "Exempted",
+        "languages": [
+            {
+                "name": "Arabic",
+                "level": "Native"
+            },
+            {
+                "name": "English",
+                "level": "Upper-Intermediate / B2"
+            }
+        ]
+    }
+}
