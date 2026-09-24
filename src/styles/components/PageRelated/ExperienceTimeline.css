@@ -1,0 +1,54 @@
+@import '../../globals.css';
+
+.experience-timeline {
+    @apply relative pl-8 sm:pl-10;
+}
+
+.experience-timeline-track,
+.experience-timeline-progress {
+    @apply absolute bottom-0 left-[6px] top-2 w-px;
+}
+
+.experience-timeline-track {
+    @apply bg-c3;
+}
+
+.experience-timeline-progress {
+    @apply origin-top bg-c5;
+}
+
+.experience-timeline-list {
+    @apply space-y-14;
+}
+
+.experience-timeline-item {
+    @apply relative;
+}
+
+.experience-timeline-dot {
+    @apply absolute -left-8 top-2 size-[13px] rounded-full bg-c5 sm:-left-10;
+}
+
+.experience-timeline-header {
+    @apply flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1;
+}
+
+.experience-timeline-position {
+    @apply text-2xl font-semibold text-c5;
+}
+
+.experience-timeline-dates {
+    @apply text-sm text-c4;
+}
+
+.experience-timeline-meta {
+    @apply mt-1 flex flex-wrap items-center gap-x-3 text-c4;
+}
+
+.experience-timeline-company {
+    @apply font-medium text-c5;
+}
+
+.experience-timeline-bullets {
+    @apply mt-4 max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-c4 marker:text-c3;
+}

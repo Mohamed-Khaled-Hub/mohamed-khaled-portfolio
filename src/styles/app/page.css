@@ -1,0 +1,162 @@
+@import '../globals.css';
+
+.home-page {
+    @apply text-c5;
+}
+
+.home-content {
+    @apply mx-auto max-w-6xl space-y-28 px-6 py-24;
+}
+
+.home-hero-inner {
+    @apply mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-24 sm:pt-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16;
+}
+
+.home-hero-text {
+    @apply min-w-0;
+}
+
+.home-hero-media {
+    @apply mx-auto w-full max-w-md lg:max-w-none;
+}
+
+.home-hero-image-float {
+    @apply relative before:absolute before:inset-0 before:translate-x-4 before:translate-y-4 before:rounded-3xl before:border before:border-c3;
+}
+
+.home-hero-image-frame {
+    @apply relative aspect-[4/5] overflow-hidden rounded-3xl border border-c3;
+}
+
+.home-hero-image {
+    @apply object-cover;
+}
+
+.home-hero-location {
+    @apply mb-6 flex items-center gap-2 text-base text-c4;
+}
+
+.home-hero-name {
+    @apply max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight text-c5 sm:text-7xl;
+}
+
+.home-hero-title {
+    @apply mt-5 text-xl text-c4 sm:text-2xl;
+}
+
+.home-hero-summary {
+    @apply mt-8 max-w-2xl text-lg leading-relaxed text-c4;
+}
+
+.home-hero-actions {
+    @apply mt-10 flex flex-wrap items-center gap-3;
+}
+
+.home-hero-button-primary,
+.home-hero-button-secondary {
+    @apply inline-flex items-center gap-2 rounded-lg px-5 py-3 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c5;
+}
+
+.home-hero-button-primary {
+    @apply bg-c5 text-c1 hover:bg-c4;
+}
+
+.home-hero-button-secondary {
+    @apply border border-c3 text-c5 hover:border-c4;
+}
+
+.home-hero-link {
+    @apply inline-flex items-center gap-1 px-3 py-3 font-medium text-c4 underline-offset-4 transition-colors hover:text-c5 hover:underline;
+}
+
+.home-projects-list {
+    @apply divide-y divide-c3 border-y border-c3;
+}
+
+.home-project {
+    @apply grid gap-6 py-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-12;
+}
+
+.home-project-name {
+    @apply text-2xl font-semibold text-c5;
+}
+
+.home-project-subtitle {
+    @apply mt-1 text-c4;
+}
+
+.home-project-links {
+    @apply mt-4 flex flex-col items-start gap-2;
+}
+
+.home-project-bullets {
+    @apply list-disc space-y-2 pl-5 leading-relaxed text-c4 marker:text-c3;
+}
+
+.home-project-tech {
+    @apply mt-5 flex flex-wrap gap-2;
+}
+
+.home-skills-list {
+    @apply space-y-7;
+}
+
+.home-skills-row {
+    @apply grid gap-3 md:grid-cols-[180px_minmax(0,1fr)] md:gap-8;
+}
+
+.home-skills-label {
+    @apply font-medium text-c4;
+}
+
+.home-skills-chips {
+    @apply flex flex-wrap gap-2;
+}
+
+.home-background {
+    @apply grid gap-12 md:grid-cols-2;
+}
+
+.home-education-item {
+    @apply flex gap-4;
+}
+
+.home-education-icon {
+    @apply mt-1 shrink-0 text-c4;
+}
+
+.home-education-degree {
+    @apply text-xl font-semibold text-c5;
+}
+
+.home-education-institution {
+    @apply mt-1 text-c5;
+}
+
+.home-education-dates {
+    @apply mt-1 text-c4;
+}
+
+.home-education-grade {
+    @apply mt-2 text-c4;
+}
+
+.home-info-list {
+    @apply space-y-5;
+}
+
+.home-info-item {
+    @apply flex gap-4;
+}
+
+.home-info-icon {
+    @apply mt-0.5 shrink-0 text-c4;
+}
+
+.home-info-languages {
+    @apply space-y-1;
+}
+
+.home-info-level {
+    @apply text-c4;
+}
