@@ -4,7 +4,7 @@
 import { motion } from 'framer-motion'
 // Types
 import { PortfolioLoadingProps } from '@/src/types/props.types'
-// Styles
+// Style
 import '@/src/styles/components/UiRelated/PortfolioLoading.css'
 
 export default function PortfolioLoading({ message }: PortfolioLoadingProps) {

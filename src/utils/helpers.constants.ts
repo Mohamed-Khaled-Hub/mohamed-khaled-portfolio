@@ -1,3 +1,6 @@
+// Types
+import { Section } from '@/src/types/ui.types'
+
 export const MONTHS = [
     'Jan',
     'Feb',
@@ -22,8 +25,8 @@ export const LINK_LABELS: Record<string, string> = {
 
 export const SKILL_LABELS: Record<string, string> = {
     languages: 'Languages',
-    frontEnd: 'Front end',
-    backEnd: 'Back end',
+    frontEnd: 'Frontend',
+    backEnd: 'Backend',
     databases: 'Databases',
     cloudAndDevOps: 'Cloud and DevOps',
     testingAndQA: 'Testing and QA',
@@ -32,3 +35,12 @@ export const SKILL_LABELS: Record<string, string> = {
     ai: 'AI',
     professional: 'Professional',
 }
+
+export const SECTIONS: Section[] = [
+    { id: 'about', label: 'About' },
+    { id: 'education', label: 'Education' },
+    { id: 'good-to-know', label: 'Good to know' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+]

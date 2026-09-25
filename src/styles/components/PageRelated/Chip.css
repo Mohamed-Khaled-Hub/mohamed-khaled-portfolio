@@ -1,0 +1,5 @@
+@import '../../globals.css';
+
+.chip {
+    @apply rounded-md border border-c3 bg-c2 px-2.5 py-1 text-sm text-c5;
+}

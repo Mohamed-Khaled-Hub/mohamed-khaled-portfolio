@@ -9,7 +9,7 @@ import Reveal from '@/src/components/PageRelated/Reveal'
 import { formatDate } from '@/src/utils/helpers.functions'
 // Types
 import { PortfolioData } from '@/src/types/portfolio.types'
-// Styles
+// Style
 import '@/src/styles/components/PageRelated/ExperienceTimeline.css'
 
 export default function ExperienceTimeline({

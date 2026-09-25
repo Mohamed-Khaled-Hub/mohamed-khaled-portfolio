@@ -1,23 +1,26 @@
 // Core
+import clsx from 'clsx'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { PropsWithChildren } from 'react'
+// Types
+import { ExternalLinkProps } from '@/src/types/props.types'
+// Style
+import '@/src/styles/components/PageRelated/ExternalLink.css'
 
 export default function ExternalLink({
     href,
     children,
-}: {
-    href: string
-} & PropsWithChildren) {
+    className,
+}: ExternalLinkProps) {
     return (
         <Link
             href={href}
             target='_blank'
             rel='noopener noreferrer'
-            className='inline-flex items-center gap-1 text-sm font-medium text-c5 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c5'
+            className={clsx('external-link', className)}
         >
             {children}
-            <ArrowUpRight size={15} aria-hidden />
+            <ArrowUpRight size={16} aria-hidden />
         </Link>
     )
 }

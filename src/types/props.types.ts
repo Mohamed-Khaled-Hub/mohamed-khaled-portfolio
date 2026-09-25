@@ -16,3 +16,8 @@ export type RevealProps = PropsWithChildren & {
     delay?: number
     duration?: number
 }
+
+export type ExternalLinkProps = PropsWithChildren & {
+    href: string
+    className?: string
+}

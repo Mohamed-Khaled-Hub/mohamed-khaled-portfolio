@@ -4,64 +4,39 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {
-    ArrowUpRight,
-    GraduationCap,
-    Languages,
     Mail,
-    MapPin,
     Phone,
+    MapPin,
+    Languages,
     ShieldCheck,
+    GraduationCap,
 } from 'lucide-react'
-import { motion, stagger, useReducedMotion, type Variants } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
+// Animations
+import {
+    heroContainer,
+    heroItem,
+    heroItemReduced,
+    heroMedia,
+    heroMediaReduced,
+} from '@/src/utils/helpers.animation'
 // Components
-import PortfolioLoading from '@/src/components/UiRelated/PortfolioLoading'
-import PortfolioError from '@/src/components/UiRelated/PortfolioError'
-import ExternalLink from '@/src/components/PageRelated/ExternalLink'
-import SectionTitle from '@/src/components/PageRelated/SectionTitle'
 import Chip from '@/src/components/PageRelated/Chip'
 import Reveal from '@/src/components/PageRelated/Reveal'
+import ExternalLink from '@/src/components/PageRelated/ExternalLink'
+import SectionTitle from '@/src/components/PageRelated/SectionTitle'
+import PortfolioError from '@/src/components/UiRelated/PortfolioError'
+import PortfolioLoading from '@/src/components/UiRelated/PortfolioLoading'
 import ExperienceTimeline from '@/src/components/PageRelated/ExperienceTimeline'
+import SectionNav from '@/src/components/PageRelated/SectionNav'
 // Constants
 import { LINK_LABELS, SKILL_LABELS } from '@/src/utils/helpers.constants'
 // Functions
 import { formatDate } from '@/src/utils/helpers.functions'
 // Hooks
 import { usePortfolio } from '@/src/providers/PortfolioProvider'
-// Styles
+// Style
 import '@/src/styles/app/page.css'
-
-const heroContainer: Variants = {
-    hidden: {},
-    show: {
-        transition: {
-            delayChildren: stagger(0.09, { startDelay: 0.05 }),
-        },
-    },
-}
-
-const heroItem: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    show: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    },
-}
-
-const heroItemReduced: Variants = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: 0.4 } },
-}
-
-const heroMedia: Variants = {
-    hidden: { opacity: 0, x: 48, scale: 0.94 },
-    show: {
-        opacity: 1,
-        x: 0,
-        scale: 1,
-        transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-    },
-}
 
 export default function Home() {
     const { portfolioData, portfolioError, isPortfolioLoading } = usePortfolio()
@@ -89,10 +64,13 @@ export default function Home() {
     } = portfolioData
 
     const item = reduceMotion ? heroItemReduced : heroItem
+    const media = reduceMotion ? heroMediaReduced : heroMedia
 
     return (
         <main className='home-page'>
-            <header>
+            <SectionNav />
+
+            <header id='about' className='home-section-scroll-margin'>
                 <motion.div
                     variants={heroContainer}
                     initial='hidden'
@@ -134,32 +112,27 @@ export default function Home() {
                                 <Phone size={18} aria-hidden />
                                 {personal.phone}
                             </Link>
-                            <Link
+                            <ExternalLink
                                 href={personal.github}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                className='home-hero-link'
+                                className='px-3 py-3'
                             >
-                                GitHub <ArrowUpRight size={16} aria-hidden />
-                            </Link>
-                            <Link
+                                GitHub
+                            </ExternalLink>
+                            <ExternalLink
                                 href={personal.linkedin}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                className='home-hero-link'
+                                className='px-3 py-3'
                             >
-                                LinkedIn <ArrowUpRight size={16} aria-hidden />
-                            </Link>
+                                LinkedIn
+                            </ExternalLink>
                         </motion.div>
                     </div>
 
-                    <motion.div
-                        variants={heroMedia}
-                        className='home-hero-media'
-                    >
+                    <motion.div variants={media} className='home-hero-media'>
                         <motion.div
                             className='home-hero-image-float'
-                            animate={{ y: [0, -12, 0] }}
+                            animate={
+                                reduceMotion ? undefined : { y: [0, -12, 0] }
+                            }
                             transition={{
                                 duration: 6,
                                 repeat: Infinity,
@@ -182,15 +155,99 @@ export default function Home() {
             </header>
 
             <div className='home-content'>
+                <section aria-labelledby='education'>
+                    <Reveal
+                        id='education'
+                        className='home-section-scroll-margin'
+                    >
+                        <SectionTitle>Education</SectionTitle>
+                        {education.map((edu) => (
+                            <div
+                                key={edu.degree}
+                                className='home-education-item'
+                            >
+                                <GraduationCap
+                                    className='home-education-icon'
+                                    size={22}
+                                    aria-hidden
+                                />
+                                <div>
+                                    <h3 className='home-education-degree'>
+                                        {edu.degree}
+                                    </h3>
+                                    <p className='home-education-institution'>
+                                        {edu.institution}
+                                    </p>
+                                    <p className='home-education-dates'>
+                                        {formatDate(edu.startDate)} –{' '}
+                                        {formatDate(edu.endDate)},{' '}
+                                        {edu.location}
+                                    </p>
+                                    <p className='home-education-grade'>
+                                        CGPA {edu.cgpa}, {edu.grade}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </Reveal>
+                </section>
+
+                <section aria-labelledby='good-to-know'>
+                    <Reveal
+                        id='good-to-know'
+                        className='home-section-scroll-margin'
+                    >
+                        <SectionTitle>Good to know</SectionTitle>
+                        <ul className='home-info-list'>
+                            <li className='home-info-item'>
+                                <ShieldCheck
+                                    className='home-info-icon'
+                                    size={22}
+                                    aria-hidden
+                                />
+                                <p>
+                                    Military status:{' '}
+                                    {additionalInformation.militaryStatus}
+                                </p>
+                            </li>
+                            <li className='home-info-item'>
+                                <Languages
+                                    className='home-info-icon'
+                                    size={22}
+                                    aria-hidden
+                                />
+                                <ul className='home-info-languages'>
+                                    {additionalInformation.languages.map(
+                                        (lang) => (
+                                            <li key={lang.name}>
+                                                {lang.name}
+                                                <span className='home-info-level'>
+                                                    , {lang.level}
+                                                </span>
+                                            </li>
+                                        ),
+                                    )}
+                                </ul>
+                            </li>
+                        </ul>
+                    </Reveal>
+                </section>
+
                 <section aria-labelledby='experience'>
-                    <Reveal id='experience'>
+                    <Reveal
+                        id='experience'
+                        className='home-section-scroll-margin'
+                    >
                         <SectionTitle>Experience</SectionTitle>
                     </Reveal>
                     <ExperienceTimeline experience={experience} />
                 </section>
 
                 <section aria-labelledby='projects'>
-                    <Reveal id='projects'>
+                    <Reveal
+                        id='projects'
+                        className='home-section-scroll-margin'
+                    >
                         <SectionTitle>Projects</SectionTitle>
                     </Reveal>
                     <div className='home-projects-list'>
@@ -240,7 +297,7 @@ export default function Home() {
                 </section>
 
                 <section aria-labelledby='skills'>
-                    <Reveal id='skills'>
+                    <Reveal id='skills' className='home-section-scroll-margin'>
                         <SectionTitle>Skills</SectionTitle>
                     </Reveal>
                     <dl className='home-skills-list'>
@@ -259,78 +316,6 @@ export default function Home() {
                             </Reveal>
                         ))}
                     </dl>
-                </section>
-
-                <section
-                    aria-labelledby='background'
-                    className='home-background'
-                >
-                    <Reveal id='background'>
-                        <SectionTitle>Education</SectionTitle>
-                        {education.map((edu) => (
-                            <div
-                                key={edu.degree}
-                                className='home-education-item'
-                            >
-                                <GraduationCap
-                                    className='home-education-icon'
-                                    size={22}
-                                    aria-hidden
-                                />
-                                <div>
-                                    <h3 className='home-education-degree'>
-                                        {edu.degree}
-                                    </h3>
-                                    <p className='home-education-institution'>
-                                        {edu.institution}
-                                    </p>
-                                    <p className='home-education-dates'>
-                                        {formatDate(edu.startDate)} –{' '}
-                                        {formatDate(edu.endDate)},{' '}
-                                        {edu.location}
-                                    </p>
-                                    <p className='home-education-grade'>
-                                        CGPA {edu.cgpa}, {edu.grade}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </Reveal>
-                    <Reveal delay={0.12}>
-                        <SectionTitle>Good to know</SectionTitle>
-                        <ul className='home-info-list'>
-                            <li className='home-info-item'>
-                                <ShieldCheck
-                                    className='home-info-icon'
-                                    size={22}
-                                    aria-hidden
-                                />
-                                <p>
-                                    Military status:{' '}
-                                    {additionalInformation.militaryStatus}
-                                </p>
-                            </li>
-                            <li className='home-info-item'>
-                                <Languages
-                                    className='home-info-icon'
-                                    size={22}
-                                    aria-hidden
-                                />
-                                <ul className='home-info-languages'>
-                                    {additionalInformation.languages.map(
-                                        (lang) => (
-                                            <li key={lang.name}>
-                                                {lang.name}
-                                                <span className='home-info-level'>
-                                                    , {lang.level}
-                                                </span>
-                                            </li>
-                                        ),
-                                    )}
-                                </ul>
-                            </li>
-                        </ul>
-                    </Reveal>
                 </section>
             </div>
         </main>

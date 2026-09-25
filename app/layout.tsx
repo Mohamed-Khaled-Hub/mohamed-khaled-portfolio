@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         title: 'Mohamed Khaled | Full Stack Developer & Software Engineer',
         description:
             'Full Stack Developer specializing in Next.js, NestJS, TypeScript, and AI-driven web applications.',
-        url: 'http://localhost:3000', // TODO: Replace with your live domain
+        url: 'https://mohamed-khaled-portfolio-eta.vercel.app/',
         siteName: 'Mohamed Khaled Portfolio',
         locale: 'en_US',
         type: 'website',

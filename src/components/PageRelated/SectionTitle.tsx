@@ -1,10 +1,8 @@
 // Core
 import { PropsWithChildren } from 'react'
+// Style
+import '@/src/styles/components/PageRelated/SectionTitle.css'
 
 export default function SectionTitle({ children }: PropsWithChildren) {
-    return (
-        <h2 className='mb-10 text-3xl font-semibold tracking-tight text-c5 sm:text-4xl'>
-            {children}
-        </h2>
-    )
+    return <h2 className='section-title'>{children}</h2>
 }

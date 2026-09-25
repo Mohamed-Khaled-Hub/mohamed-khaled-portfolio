@@ -1,0 +1,5 @@
+@import '../../globals.css';
+
+.external-link {
+    @apply inline-flex items-center gap-1 text-sm font-medium text-c4 underline-offset-4 transition-colors hover:text-c5 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c5;
+}

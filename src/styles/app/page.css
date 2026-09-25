@@ -8,6 +8,10 @@
     @apply mx-auto max-w-6xl space-y-28 px-6 py-24;
 }
 
+.home-section-scroll-margin {
+    @apply scroll-mt-10;
+}
+
 .home-hero-inner {
     @apply mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-24 sm:pt-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16;
 }
@@ -65,8 +69,28 @@
     @apply border border-c3 text-c5 hover:border-c4;
 }
 
-.home-hero-link {
-    @apply inline-flex items-center gap-1 px-3 py-3 font-medium text-c4 underline-offset-4 transition-colors hover:text-c5 hover:underline;
+.home-education-item {
+    @apply flex gap-4;
+}
+
+.home-education-icon {
+    @apply mt-1 shrink-0 text-c4;
+}
+
+.home-education-degree {
+    @apply text-xl font-semibold text-c5;
+}
+
+.home-education-institution {
+    @apply mt-1 text-c5;
+}
+
+.home-education-dates {
+    @apply mt-1 text-c4;
+}
+
+.home-education-grade {
+    @apply mt-2 text-c4;
 }
 
 .home-projects-list {
@@ -111,34 +135,6 @@
 
 .home-skills-chips {
     @apply flex flex-wrap gap-2;
-}
-
-.home-background {
-    @apply grid gap-12 md:grid-cols-2;
-}
-
-.home-education-item {
-    @apply flex gap-4;
-}
-
-.home-education-icon {
-    @apply mt-1 shrink-0 text-c4;
-}
-
-.home-education-degree {
-    @apply text-xl font-semibold text-c5;
-}
-
-.home-education-institution {
-    @apply mt-1 text-c5;
-}
-
-.home-education-dates {
-    @apply mt-1 text-c4;
-}
-
-.home-education-grade {
-    @apply mt-2 text-c4;
 }
 
 .home-info-list {

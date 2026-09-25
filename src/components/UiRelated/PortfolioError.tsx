@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { AlertCircle } from 'lucide-react'
 // Types
 import { PortfolioErrorProps } from '@/src/types/props.types'
-// Styles
+// Style
 import '@/src/styles/components/UiRelated/PortfolioError.css'
 
 export default function PortfolioError({ message }: PortfolioErrorProps) {
