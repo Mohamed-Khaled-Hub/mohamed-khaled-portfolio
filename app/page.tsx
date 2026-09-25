@@ -155,84 +155,142 @@ export default function Home() {
             </header>
 
             <div className='home-content'>
+                {/* Eduction */}
                 <section aria-labelledby='education'>
                     <Reveal
                         id='education'
                         className='home-section-scroll-margin'
                     >
                         <SectionTitle>Education</SectionTitle>
-                        {education.map((edu) => (
-                            <div
-                                key={edu.degree}
-                                className='home-education-item'
-                            >
-                                <GraduationCap
-                                    className='home-education-icon'
-                                    size={22}
-                                    aria-hidden
-                                />
-                                <div>
-                                    <h3 className='home-education-degree'>
-                                        {edu.degree}
-                                    </h3>
-                                    <p className='home-education-institution'>
-                                        {edu.institution}
-                                    </p>
-                                    <p className='home-education-dates'>
-                                        {formatDate(edu.startDate)} –{' '}
-                                        {formatDate(edu.endDate)},{' '}
-                                        {edu.location}
-                                    </p>
-                                    <p className='home-education-grade'>
-                                        CGPA {edu.cgpa}, {edu.grade}
-                                    </p>
+                        <div className='home-education-list'>
+                            {education.map((edu) => (
+                                <div
+                                    key={edu.degree}
+                                    className='home-education-item'
+                                >
+                                    <GraduationCap
+                                        className='home-education-icon'
+                                        size={22}
+                                        aria-hidden
+                                    />
+                                    <div className='home-education-content'>
+                                        <h3 className='home-education-degree'>
+                                            {edu.degree}
+                                        </h3>
+                                        <p className='home-education-institution'>
+                                            {edu.institution}
+                                        </p>
+                                        <div className='home-education-meta'>
+                                            <span>
+                                                {formatDate(edu.startDate)} –{' '}
+                                                {formatDate(edu.endDate)}
+                                            </span>
+                                            <span
+                                                className='home-education-dot'
+                                                aria-hidden
+                                            >
+                                                •
+                                            </span>
+                                            <span className='home-education-location'>
+                                                <MapPin size={14} aria-hidden />
+                                                {edu.location}
+                                            </span>
+                                        </div>
+                                        {(edu.cgpa || edu.grade) && (
+                                            <p className='home-education-grade'>
+                                                {edu.cgpa && (
+                                                    <span>
+                                                        CGPA:{' '}
+                                                        <strong className='home-education-highlight'>
+                                                            {edu.cgpa}
+                                                        </strong>
+                                                    </span>
+                                                )}
+                                                {edu.cgpa && edu.grade && (
+                                                    <span
+                                                        className='home-education-dot'
+                                                        aria-hidden
+                                                    >
+                                                        •
+                                                    </span>
+                                                )}
+                                                {edu.grade && (
+                                                    <span>{edu.grade}</span>
+                                                )}
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </Reveal>
                 </section>
 
+                {/* Good to know */}
                 <section aria-labelledby='good-to-know'>
                     <Reveal
                         id='good-to-know'
                         className='home-section-scroll-margin'
                     >
                         <SectionTitle>Good to know</SectionTitle>
-                        <ul className='home-info-list'>
-                            <li className='home-info-item'>
-                                <ShieldCheck
-                                    className='home-info-icon'
-                                    size={22}
-                                    aria-hidden
-                                />
-                                <p>
-                                    Military status:{' '}
+                        <dl className='home-info-list'>
+                            <div className='home-info-row'>
+                                <dt className='home-info-label'>
+                                    <ShieldCheck
+                                        className='home-info-icon'
+                                        size={20}
+                                        aria-hidden
+                                    />
+                                    <span>Military Status</span>
+                                </dt>
+                                <dd className='home-info-value'>
                                     {additionalInformation.militaryStatus}
-                                </p>
-                            </li>
-                            <li className='home-info-item'>
-                                <Languages
-                                    className='home-info-icon'
-                                    size={22}
-                                    aria-hidden
-                                />
-                                <ul className='home-info-languages'>
+                                </dd>
+                            </div>
+
+                            <div className='home-info-row'>
+                                <dt className='home-info-label'>
+                                    <Languages
+                                        className='home-info-icon'
+                                        size={20}
+                                        aria-hidden
+                                    />
+                                    <span>Languages</span>
+                                </dt>
+                                <dd className='home-info-languages'>
                                     {additionalInformation.languages.map(
-                                        (lang) => (
-                                            <li key={lang.name}>
-                                                {lang.name}
-                                                <span className='home-info-level'>
-                                                    , {lang.level}
+                                        (lang, index) => (
+                                            <span
+                                                key={lang.name}
+                                                className='home-language-item'
+                                            >
+                                                <span className='home-language-name'>
+                                                    {lang.name}
                                                 </span>
-                                            </li>
+                                                <span className='home-language-level'>
+                                                    ({lang.level})
+                                                </span>
+                                                {index <
+                                                    additionalInformation
+                                                        .languages.length -
+                                                        1 && (
+                                                    <span
+                                                        className='home-info-dot'
+                                                        aria-hidden
+                                                    >
+                                                        •
+                                                    </span>
+                                                )}
+                                            </span>
                                         ),
                                     )}
-                                </ul>
-                            </li>
-                        </ul>
+                                </dd>
+                            </div>
+                        </dl>
                     </Reveal>
                 </section>
 
+                {/* Experience */}
                 <section aria-labelledby='experience'>
                     <Reveal
                         id='experience'
@@ -243,6 +301,7 @@ export default function Home() {
                     <ExperienceTimeline experience={experience} />
                 </section>
 
+                {/* Projects */}
                 <section aria-labelledby='projects'>
                     <Reveal
                         id='projects'
@@ -296,6 +355,7 @@ export default function Home() {
                     </div>
                 </section>
 
+                {/* Skills */}
                 <section aria-labelledby='skills'>
                     <Reveal id='skills' className='home-section-scroll-margin'>
                         <SectionTitle>Skills</SectionTitle>

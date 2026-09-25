@@ -69,12 +69,20 @@
     @apply border border-c3 text-c5 hover:border-c4;
 }
 
+.home-education-list {
+    @apply space-y-8;
+}
+
 .home-education-item {
     @apply flex gap-4;
 }
 
 .home-education-icon {
-    @apply mt-1 shrink-0 text-c4;
+    @apply mt-1 shrink-0 text-c5;
+}
+
+.home-education-content {
+    @apply flex-1 space-y-1.5;
 }
 
 .home-education-degree {
@@ -82,15 +90,27 @@
 }
 
 .home-education-institution {
-    @apply mt-1 text-c5;
+    @apply text-base font-medium text-c4;
 }
 
-.home-education-dates {
-    @apply mt-1 text-c4;
+.home-education-meta {
+    @apply flex flex-wrap items-center gap-2 pt-0.5 text-sm text-c4;
+}
+
+.home-education-dot {
+    @apply text-c4;
+}
+
+.home-education-location {
+    @apply flex items-center gap-1;
 }
 
 .home-education-grade {
-    @apply mt-2 text-c4;
+    @apply flex flex-wrap items-center gap-2 pt-1 text-sm text-c4;
+}
+
+.home-education-highlight {
+    @apply font-semibold text-c5;
 }
 
 .home-projects-list {
@@ -141,18 +161,38 @@
     @apply space-y-5;
 }
 
-.home-info-item {
-    @apply flex gap-4;
+.home-info-row {
+    @apply flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-6;
+}
+
+.home-info-label {
+    @apply flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-c4 sm:w-44 sm:shrink-0;
 }
 
 .home-info-icon {
-    @apply mt-0.5 shrink-0 text-c4;
+    @apply shrink-0 text-c5;
+}
+
+.home-info-value {
+    @apply text-base font-medium text-c5;
 }
 
 .home-info-languages {
-    @apply space-y-1;
+    @apply flex flex-wrap items-center gap-3;
 }
 
-.home-info-level {
-    @apply text-c4;
+.home-language-item {
+    @apply flex items-center gap-1.5 text-base;
+}
+
+.home-language-name {
+    @apply font-medium text-c5;
+}
+
+.home-language-level {
+    @apply text-sm text-c4;
+}
+
+.home-info-dot {
+    @apply ml-1.5 text-c4;
 }

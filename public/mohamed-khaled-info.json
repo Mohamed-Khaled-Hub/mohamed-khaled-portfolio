@@ -88,6 +88,7 @@
                 "FastAPI",
                 "LangChain",
                 "Gemini AI",
+                "ChromaDB",
                 "SQLite"
             ],
             "links": {
@@ -95,8 +96,8 @@
                 "githubBackend": "https://github.com/Mohamed-Khaled-Hub/fcds-mentor-backend"
             },
             "description": [
-                "Designed an LLM-powered academic advisor with Gemini AI answering student questions from 2 official university regulation PDFs.",
-                "Developed a FastAPI and LangChain RAG pipeline, tested and tuned to 98% context retrieval accuracy on a 200-question test set.",
+                "Designed an LLM-powered academic advisor with Gemini AI answering student queries from 2 official university regulation PDFs.",
+                "Engineered a FastAPI and LangChain RAG pipeline using ChromaDB for storing vector embeddings and executing cosine similarity search, achieving 98% context retrieval accuracy on a 200-question test set.",
                 "Enforced RBAC for 2 roles across 4 academic years to target notifications by role and year."
             ]
         },
@@ -176,7 +177,8 @@
             "SQLite",
             "MongoDB (Mongoose)",
             "Neo4j (Cypher)",
-            "CognoDB"
+            "CognoDB",
+            "Vector Databases (ChromaDB, FAISS)"
         ],
         "cloudAndDevOps": [
             "AWS (EC2, S3)",
@@ -209,11 +211,14 @@
         "ai": [
             "Generative AI",
             "Large Language Models (LLMs)",
-            "Model Training & Evaluation",
-            "Data Annotation",
             "Retrieval-Augmented Generation (RAG)",
             "LangChain",
-            "Gemini AI"
+            "Gemini API",
+            "Text Embeddings",
+            "Semantic Search",
+            "Document Chunking",
+            "Prompt Engineering",
+            "Model Evaluation & Data Annotation"
         ],
         "professional": [
             "Problem Solving",
