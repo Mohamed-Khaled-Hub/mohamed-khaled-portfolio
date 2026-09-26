@@ -4,6 +4,8 @@
 import { X } from 'lucide-react'
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+// Components
+import VideoPlayer from '@/src/components/PageRelated/VideoPlayer'
 // Types
 import { DemoVideoModalProps } from '@/src/types/props.types'
 // Styles
@@ -17,7 +19,9 @@ export default function DemoVideoModal({
         if (!src) return
 
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') onCloseAction()
+            if (event.key === 'Escape' && !document.fullscreenElement) {
+                onCloseAction()
+            }
         }
 
         document.addEventListener('keydown', handleKeyDown)
@@ -61,11 +65,12 @@ export default function DemoVideoModal({
                             <X size={18} aria-hidden />
                         </button>
 
-                        <video
+                        <VideoPlayer
+                            key={src}
                             src={src}
-                            controls
-                            autoPlay
-                            className='demo-video-modal-video'
+                            extraShortcuts={[
+                                { keys: ['Esc'], label: 'Close video' },
+                            ]}
                         />
                     </motion.div>
                 </motion.div>

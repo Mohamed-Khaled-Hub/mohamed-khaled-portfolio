@@ -1,5 +1,7 @@
 // Core
 import type { PropsWithChildren } from 'react'
+// Types
+import { Shortcut } from '@/src/types/ui.types'
 
 export type PortfolioLoadingProps = {
     message?: string
@@ -26,4 +28,9 @@ export type ExternalLinkProps = PropsWithChildren & {
 export type DemoVideoModalProps = {
     src: string | null
     onCloseAction: () => void
+}
+
+export type VideoPlayerProps = {
+    src: string
+    extraShortcuts?: Shortcut[]
 }

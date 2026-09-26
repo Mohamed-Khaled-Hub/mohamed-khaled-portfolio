@@ -1,0 +1,85 @@
+@import '../../globals.css';
+
+.video-player {
+    @apply relative w-full bg-c2;
+}
+
+.video-player-media-wrap {
+    @apply relative;
+}
+
+.video-player-media {
+    @apply aspect-video w-full cursor-pointer bg-c2;
+}
+
+.video-player-shortcuts {
+    @apply border-b border-c3 bg-c1 p-3;
+}
+
+.video-player-shortcuts-overlay {
+    @apply absolute inset-x-3 top-3 z-10 rounded-2xl border-b-0 bg-c1/85 backdrop-blur transition-opacity duration-500;
+}
+
+.video-player-shortcuts-hidden {
+    @apply pointer-events-none opacity-0;
+}
+
+.video-player-shortcuts-list {
+    @apply flex flex-wrap gap-x-5 gap-y-2;
+}
+
+.video-player-shortcuts-row {
+    @apply flex items-center gap-2;
+}
+
+.video-player-shortcuts-keys {
+    @apply flex items-center gap-1;
+}
+
+.video-player-shortcuts-label {
+    @apply text-xs text-c4;
+}
+
+.video-player-kbd {
+    @apply flex min-w-[1.5rem] items-center justify-center rounded-md border border-c3 border-b-2 bg-c2 px-1.5 py-0.5 text-center font-mono text-xs font-semibold text-c5;
+}
+
+.video-player-feedback {
+    @apply pointer-events-none absolute inset-0 flex items-center justify-center;
+}
+
+.video-player-feedback-badge {
+    @apply flex items-center gap-2 rounded-full border border-c3 bg-c1/80 px-5 py-4 text-c5 backdrop-blur;
+}
+
+.video-player-controls {
+    @apply space-y-2 border-t border-c3 bg-c1 px-4 py-3;
+}
+
+.video-player-progress {
+    @apply h-1 w-full cursor-pointer appearance-none rounded-full bg-c3 accent-c5;
+}
+
+.video-player-controls-row {
+    @apply flex flex-wrap items-center justify-between gap-3;
+}
+
+.video-player-controls-group {
+    @apply flex items-center gap-2;
+}
+
+.video-player-btn {
+    @apply flex cursor-pointer items-center justify-center rounded-full border border-c3 bg-c1 p-2 text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
+}
+
+.video-player-rate {
+    @apply w-11 px-0 text-xs font-semibold;
+}
+
+.video-player-time {
+    @apply ml-1 text-sm tabular-nums text-c4;
+}
+
+.video-player-volume {
+    @apply h-1 w-20 cursor-pointer appearance-none rounded-full bg-c3 accent-c5;
+}

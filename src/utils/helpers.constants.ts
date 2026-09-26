@@ -1,5 +1,5 @@
 // Types
-import { Section } from '@/src/types/ui.types'
+import { Section, Shortcut } from '@/src/types/ui.types'
 
 export const MONTHS = [
     'Jan',
@@ -44,3 +44,16 @@ export const SECTIONS: Section[] = [
     { id: 'projects', label: 'Projects' },
     { id: 'skills', label: 'Skills' },
 ]
+
+export const SHORTCUTS: Shortcut[] = [
+    { keys: ['Space', 'K'], label: 'Play / pause' },
+    { keys: ['←', 'J'], label: 'Back 10s' },
+    { keys: ['→', 'L'], label: 'Forward 10s' },
+    { keys: ['↑'], label: 'Volume up' },
+    { keys: ['↓'], label: 'Volume down' },
+    { keys: ['M'], label: 'Mute / unmute' },
+    { keys: ['F'], label: 'Fullscreen' },
+    { keys: ['0', '–', '9'], label: 'Jump to 0%–90%' },
+]
+
+export const RATES = [0.5, 1, 1.25, 1.5, 2]
