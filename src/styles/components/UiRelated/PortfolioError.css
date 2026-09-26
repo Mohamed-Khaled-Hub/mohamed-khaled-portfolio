@@ -1,21 +1,29 @@
 @import '../../globals.css';
 
 .error-container {
-    @apply flex flex-1 min-h-screen items-center justify-center p-6;
+    @apply flex min-h-screen flex-1 items-center justify-center p-4 sm:p-6;
 }
 
 .error-card {
-    @apply flex max-w-md flex-col items-center rounded-xl border border-red-500/30 bg-red-950/20 p-8 text-center backdrop-blur-md;
+    @apply flex w-full max-w-lg flex-col items-center rounded-2xl border border-red-500/30 bg-red-950/20 p-6 text-center backdrop-blur-md sm:p-8;
 }
 
 .error-icon {
-    @apply h-12 w-12 text-red-500 mb-4;
+    @apply mb-3 h-12 w-12 text-red-500;
 }
 
 .error-title {
-    @apply text-lg font-bold text-red-500;
+    @apply text-lg font-bold text-red-400 sm:text-xl;
+}
+
+.error-message-wrapper {
+    @apply mt-3 max-h-60 w-full overflow-y-auto rounded-lg border border-red-500/10 bg-red-950/40 p-3.5 text-left [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-red-500/20 [&::-webkit-scrollbar]:w-1.5 hover:[&::-webkit-scrollbar-thumb]:bg-red-500/40;
 }
 
 .error-message {
-    @apply mt-2 text-sm text-red-200/80;
+    @apply font-mono text-xs leading-relaxed text-red-200/90 whitespace-pre-wrap break-words [overflow-wrap:anywhere] sm:text-sm;
+}
+
+.error-retry-btn {
+    @apply mt-6 flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-5 py-2.5 text-sm font-medium text-red-200 transition-all hover:border-red-500/50 hover:bg-red-500/20 active:scale-95;
 }

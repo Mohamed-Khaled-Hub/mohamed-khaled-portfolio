@@ -21,9 +21,11 @@ export async function GET(): Promise<NextResponse<PortfolioDataResponse>> {
     } catch (error) {
         console.error('Failed to read portfolio data:', error)
 
-        return NextResponse.json(
-            { message: 'Failed to load portfolio data' },
-            { status: 500 },
-        )
+        const errorMessage =
+            error instanceof Error
+                ? error.message
+                : 'Failed to load portfolio data'
+
+        return NextResponse.json({ message: errorMessage }, { status: 500 })
     }
 }

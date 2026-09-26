@@ -11,6 +11,8 @@ import {
     useState,
     useEffect,
 } from 'react'
+// Functions
+import { fetchWithRetry } from '@/src/utils/helpers.functions'
 // Types
 import { PortfolioData } from '@/src/types/portfolio.types'
 import { PortfolioDataResponse } from '@/src/types/api.types'
@@ -38,6 +40,21 @@ export default function PortfolioProvider({ children }: PropsWithChildren) {
     const [isPortfolioLoading, setIsPortfolioLoading] = useState<boolean>(true)
     const [portfolioError, setPortfolioError] = useState<string | null>(null)
 
+    // Call API with retries
+    const fetchPortfolioDataWithRetry =
+        useCallback(async (): Promise<PortfolioDataResponse> => {
+            return fetchWithRetry(
+                async () => {
+                    const { data } = await axios.get<PortfolioDataResponse>(
+                        '/api/mohamed-khaled-info',
+                    )
+                    return data
+                },
+                3,
+                1000,
+            )
+        }, [])
+
     // GET /api/mohamed-khaled-info
     const getPortfolioData =
         useCallback(async (): Promise<PortfolioDataResponse> => {
@@ -45,9 +62,7 @@ export default function PortfolioProvider({ children }: PropsWithChildren) {
             setPortfolioError(null)
 
             try {
-                const { data } = await axios.get<PortfolioDataResponse>(
-                    '/api/mohamed-khaled-info',
-                )
+                const data = await fetchPortfolioDataWithRetry()
 
                 if ('message' in data) {
                     setPortfolioError(data.message)
@@ -60,21 +75,52 @@ export default function PortfolioProvider({ children }: PropsWithChildren) {
                 const message =
                     axios.isAxiosError(err) && err.response?.data?.message
                         ? err.response.data.message
-                        : 'Failed to load portfolio data'
+                        : 'Failed to load portfolio data. Please check your connection.'
 
                 setPortfolioError(message)
                 return { message }
             } finally {
                 setIsPortfolioLoading(false)
             }
-        }, [])
+        }, [fetchPortfolioDataWithRetry])
 
-    // Fetch initial data on mount if null
+    // Fetch portfolio data
     useEffect(() => {
-        if (!portfolioData) {
-            getPortfolioData().catch(() => {})
+        let isMounted = true
+
+        const fetchInitialData = async () => {
+            try {
+                const data = await fetchPortfolioDataWithRetry()
+
+                if (!isMounted) return
+
+                if ('message' in data) {
+                    setPortfolioError(data.message)
+                } else {
+                    setPortfolioData(data)
+                }
+            } catch (err) {
+                if (!isMounted) return
+
+                const message =
+                    axios.isAxiosError(err) && err.response?.data?.message
+                        ? err.response.data.message
+                        : 'Failed to load portfolio data. Please check your connection.'
+
+                setPortfolioError(message)
+            } finally {
+                if (isMounted) {
+                    setIsPortfolioLoading(false)
+                }
+            }
         }
-    }, [getPortfolioData, portfolioData])
+
+        fetchInitialData().then()
+
+        return () => {
+            isMounted = false
+        }
+    }, [fetchPortfolioDataWithRetry])
 
     // Context Value
     const contextValue = useMemo(

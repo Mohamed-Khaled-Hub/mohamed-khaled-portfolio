@@ -7,6 +7,7 @@ export type PortfolioLoadingProps = {
 
 export type PortfolioErrorProps = {
     message?: string
+    onRetryAction?: () => void
 }
 
 export type RevealProps = PropsWithChildren & {

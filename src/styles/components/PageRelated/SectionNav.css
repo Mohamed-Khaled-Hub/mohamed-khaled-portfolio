@@ -5,11 +5,11 @@
 }
 
 .section-nav-toggle {
-    @apply flex items-center justify-center rounded-full border border-c3 bg-c1 p-2 text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
+    @apply flex cursor-pointer items-center justify-center rounded-full border border-c3 bg-c1 p-2 text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
 }
 
 .section-nav-jump {
-    @apply flex items-center gap-2 rounded-full border border-c3 bg-c1 p-2 text-sm font-medium text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
+    @apply flex cursor-pointer items-center gap-2 rounded-full border border-c3 bg-c1 p-2 text-sm font-medium text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
 }
 
 .section-nav-list {
@@ -17,5 +17,5 @@
 }
 
 .section-nav-item {
-    @apply w-full text-left rounded-lg px-3 py-1.5 text-sm text-c4 transition-colors hover:text-c5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5 aria-[current=true]:bg-c2 aria-[current=true]:text-c5;
+    @apply w-full cursor-pointer text-left rounded-lg px-3 py-1.5 text-sm text-c4 transition-colors hover:text-c5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5 aria-[current=true]:bg-c2 aria-[current=true]:text-c5;
 }

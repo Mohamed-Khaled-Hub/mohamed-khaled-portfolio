@@ -1,14 +1,32 @@
 'use client'
 
 // Core
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, RefreshCw } from 'lucide-react'
+// Hooks
+import { usePortfolio } from '@/src/providers/PortfolioProvider'
 // Types
 import { PortfolioErrorProps } from '@/src/types/props.types'
 // Style
 import '@/src/styles/components/UiRelated/PortfolioError.css'
 
-export default function PortfolioError({ message }: PortfolioErrorProps) {
+export default function PortfolioError({
+    message,
+    onRetryAction,
+}: PortfolioErrorProps) {
+    const router = useRouter()
+    const { getPortfolioData } = usePortfolio()
+
+    const handleRetry = () => {
+        if (onRetryAction) {
+            onRetryAction()
+        } else {
+            getPortfolioData().catch(() => {})
+            router.refresh()
+        }
+    }
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -46,11 +64,11 @@ export default function PortfolioError({ message }: PortfolioErrorProps) {
                     }}
                     className='error-title'
                 >
-                    Error
+                    Something went wrong
                 </motion.h2>
 
                 {message && (
-                    <motion.p
+                    <motion.div
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
@@ -58,11 +76,27 @@ export default function PortfolioError({ message }: PortfolioErrorProps) {
                             delay: 0.25,
                             ease: [0.16, 1, 0.3, 1],
                         }}
-                        className='error-message'
+                        className='error-message-wrapper'
                     >
-                        {message}
-                    </motion.p>
+                        <p className='error-message'>{message}</p>
+                    </motion.div>
                 )}
+
+                <motion.button
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.5,
+                        delay: 0.35,
+                        ease: [0.16, 1, 0.3, 1],
+                    }}
+                    onClick={handleRetry}
+                    className='error-retry-btn'
+                    type='button'
+                >
+                    <RefreshCw size={16} />
+                    <span>Try Again</span>
+                </motion.button>
             </motion.div>
         </motion.div>
     )
