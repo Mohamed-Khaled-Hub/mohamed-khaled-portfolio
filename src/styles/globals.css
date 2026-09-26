@@ -9,7 +9,7 @@
 }
 
 html {
-    @apply h-full antialiased;
+    @apply h-full antialiased scrollbar-gutter-stable;
 }
 
 body {

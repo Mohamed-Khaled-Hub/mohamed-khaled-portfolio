@@ -133,6 +133,10 @@
     @apply mt-4 flex flex-col items-start gap-2;
 }
 
+.home-project-demo {
+    @apply mt-2 cursor-pointer inline-flex items-center gap-1.5 text-sm font-medium text-c5 underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c5;
+}
+
 .home-project-bullets {
     @apply list-disc space-y-2 pl-5 leading-relaxed text-c4 marker:text-c3;
 }

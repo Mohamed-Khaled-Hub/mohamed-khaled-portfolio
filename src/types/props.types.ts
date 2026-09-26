@@ -22,3 +22,8 @@ export type ExternalLinkProps = PropsWithChildren & {
     href: string
     className?: string
 }
+
+export type DemoVideoModalProps = {
+    src: string | null
+    onCloseAction: () => void
+}

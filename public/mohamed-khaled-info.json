@@ -91,6 +91,7 @@
                 "ChromaDB",
                 "SQLite"
             ],
+            "demoVideo": "/videos/fcds-mentor.mkv",
             "links": {
                 "githubFrontend": "https://github.com/Mohamed-Khaled-Hub/fcds-mentor-frontend",
                 "githubBackend": "https://github.com/Mohamed-Khaled-Hub/fcds-mentor-backend"

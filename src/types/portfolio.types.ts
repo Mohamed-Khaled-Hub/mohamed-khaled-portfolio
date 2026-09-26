@@ -35,6 +35,7 @@ export type Experience = {
     startDate: string
     endDate: string
     location: string
+    demoVideo?: string
     description: string[]
 }
 
@@ -42,6 +43,7 @@ export type Project = {
     name: string
     subtitle: string
     technologies: string[]
+    demoVideo?: string
     links: {
         liveDemo?: string
         github?: string

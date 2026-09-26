@@ -45,6 +45,10 @@
     @apply mt-1 flex flex-wrap items-center gap-x-3 text-c4;
 }
 
+.experience-timeline-demo {
+    @apply mt-2 cursor-pointer inline-flex items-center gap-1.5 text-sm font-medium text-c5 underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c5;
+}
+
 .experience-timeline-company {
     @apply font-medium text-c5;
 }

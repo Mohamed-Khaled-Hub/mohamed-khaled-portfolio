@@ -1,0 +1,17 @@
+@import '../../globals.css';
+
+.demo-video-modal-backdrop {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-c1/70 p-4;
+}
+
+.demo-video-modal-panel {
+    @apply relative w-full max-w-3xl overflow-hidden rounded-2xl border border-c3 bg-c1;
+}
+
+.demo-video-modal-close {
+    @apply absolute right-3 top-3 z-10 flex cursor-pointer items-center justify-center rounded-full border border-c3 bg-c1 p-2 text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
+}
+
+.demo-video-modal-video {
+    @apply aspect-video w-full bg-c2;
+}
