@@ -57,6 +57,7 @@
             "startDate": "2025-08",
             "endDate": "2025-10",
             "location": "Alexandria, Egypt",
+            "demoVideo": "/videos/cyber-guard-x.mp4",
             "description": [
                 "Coordinated with a 5-developer Agile team on 2 client projects over 3 months, using Git feature branches and 10+ peer-reviewed pull requests.",
                 "Developed the Cyber Guard Academy platform with Next.js, React, TypeScript, and Tailwind CSS, integrating the Calendly API to automate appointment scheduling.",
@@ -71,6 +72,7 @@
             "startDate": "2025-05",
             "endDate": "2025-07",
             "location": "Remote",
+            "demoVideo": "/videos/whiff.mp4",
             "description": [
                 "Launched a mobile-first, headless e-commerce storefront using Next.js, TypeScript, and Tailwind CSS, integrated with the Shopify Storefront API for product, inventory, and order data.",
                 "Implemented asynchronous cart and checkout against Shopify with React hooks and GraphQL mutations, eliminating full page reloads and improving SEO with Server Components."
@@ -91,7 +93,7 @@
                 "ChromaDB",
                 "SQLite"
             ],
-            "demoVideo": "/videos/fcds-mentor.mkv",
+            "demoVideo": "/videos/fcds-mentor.mp4",
             "links": {
                 "githubFrontend": "https://github.com/Mohamed-Khaled-Hub/fcds-mentor-frontend",
                 "githubBackend": "https://github.com/Mohamed-Khaled-Hub/fcds-mentor-backend"
@@ -113,6 +115,7 @@
                 "Neo4j",
                 "Tailwind CSS"
             ],
+            "demoVideo": "/videos/watchnext.mp4",
             "links": {
                 "liveDemo": "https://watchnext-frontend-three.vercel.app/",
                 "githubFrontend": "https://github.com/Mohamed-Khaled-Hub/watchnext-frontend",

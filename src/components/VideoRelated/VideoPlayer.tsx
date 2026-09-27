@@ -1,7 +1,7 @@
 'use client'
 
 // Core
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
     Maximize,
@@ -29,6 +29,7 @@ export default function VideoPlayer({
 }: VideoPlayerProps) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+    const progressRef = useRef<HTMLInputElement>(null)
     const hideTimeout = useRef<ReturnType<typeof setTimeout>>(undefined)
     const feedbackId = useRef(0)
 
@@ -52,12 +53,25 @@ export default function VideoPlayer({
         }, 700)
     }
 
+    const updateProgressFill = useCallback(
+        (time: number) => {
+            const input = progressRef.current
+            if (!input || !duration) return
+            const pct = (time / duration) * 100
+            input.style.background = `linear-gradient(to right, var(--color-c5) ${pct}%, var(--color-c3) ${pct}%)`
+        },
+        [duration],
+    )
+
     // Sync state with the <video> element
     useEffect(() => {
         const video = videoRef.current
         if (!video) return
 
-        const onTimeUpdate = () => setCurrentTime(video.currentTime)
+        const onTimeUpdate = () => {
+            setCurrentTime(video.currentTime)
+            updateProgressFill(video.currentTime)
+        }
         const onLoadedMetadata = () => setDuration(video.duration)
         const onPlay = () => setPlaying(true)
         const onPause = () => setPlaying(false)
@@ -73,7 +87,7 @@ export default function VideoPlayer({
             video.removeEventListener('play', onPlay)
             video.removeEventListener('pause', onPause)
         }
-    }, [])
+    }, [fullscreen, updateProgressFill])
 
     // Track native fullscreen state
     useEffect(() => {
@@ -218,6 +232,22 @@ export default function VideoPlayer({
         }
     }, [fullscreen, playing])
 
+    // Make the thumb of the video moves smoothly
+    useEffect(() => {
+        if (!playing) return
+        let frame: number
+        const tick = () => {
+            const video = videoRef.current
+            if (video) {
+                setCurrentTime(video.currentTime)
+                updateProgressFill(video.currentTime)
+            }
+            frame = requestAnimationFrame(tick)
+        }
+        frame = requestAnimationFrame(tick)
+        return () => cancelAnimationFrame(frame)
+    }, [playing, duration, updateProgressFill])
+
     const renderFeedbackIcon = () => {
         if (!feedback) return null
 
@@ -348,6 +378,7 @@ export default function VideoPlayer({
 
             <div className={controlsClassName}>
                 <input
+                    ref={progressRef}
                     type='range'
                     min={0}
                     max={duration || 0}
@@ -356,7 +387,10 @@ export default function VideoPlayer({
                     onChange={(event) => {
                         const video = videoRef.current
                         if (!video) return
-                        video.currentTime = Number(event.target.value)
+                        const next = Number(event.target.value)
+                        video.currentTime = next
+                        setCurrentTime(next)
+                        updateProgressFill(next)
                     }}
                     className='video-player-progress'
                     aria-label='Seek'
