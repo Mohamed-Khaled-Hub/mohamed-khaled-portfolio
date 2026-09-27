@@ -6,7 +6,7 @@ import { Video } from 'lucide-react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 // Components
 import Reveal from '@/src/components/PageRelated/Reveal'
-import DemoVideoModal from '@/src/components/PageRelated/DemoVideoModal'
+import DemoVideoModal from '@/src/components/VideoRelated/DemoVideoModal'
 // Functions
 import { formatDate } from '@/src/utils/helpers.functions'
 // Types

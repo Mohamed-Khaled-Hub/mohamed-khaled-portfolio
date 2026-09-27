@@ -21,7 +21,7 @@ import { formatVideoTime } from '@/src/utils/helpers.functions'
 import { Feedback, FeedbackType } from '@/src/types/ui.types'
 import { VideoPlayerProps } from '@/src/types/props.types'
 // Styles
-import '@/src/styles/components/PageRelated/VideoPlayer.css'
+import '@/src/styles/components/VideoRelated/VideoPlayer.css'
 
 export default function VideoPlayer({
     src,
@@ -39,7 +39,7 @@ export default function VideoPlayer({
     const [muted, setMuted] = useState(false)
     const [rateIndex, setRateIndex] = useState(1)
     const [fullscreen, setFullscreen] = useState(false)
-    const [shortcutsVisible, setShortcutsVisible] = useState(true)
+    const [uiVisible, setUiVisible] = useState(true)
     const [feedback, setFeedback] = useState<Feedback | null>(null)
 
     const allShortcuts = [...SHORTCUTS, ...extraShortcuts]
@@ -52,7 +52,7 @@ export default function VideoPlayer({
         }, 700)
     }
 
-    // Sync state with the underlying <video> element
+    // Sync state with the <video> element
     useEffect(() => {
         const video = videoRef.current
         if (!video) return
@@ -187,14 +187,15 @@ export default function VideoPlayer({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    // Auto-hide the shortcuts list: only while fullscreen and playing
+    // Auto-hide the shortcuts list and controls bar
+    // Only while fullscreen, playing, reappearing on mouse movement, a key press, or a tap
     useEffect(() => {
         const resetHideTimer = () => {
-            setShortcutsVisible(true)
+            setUiVisible(true)
             clearTimeout(hideTimeout.current)
             if (fullscreen && playing) {
                 hideTimeout.current = setTimeout(
-                    () => setShortcutsVisible(false),
+                    () => setUiVisible(false),
                     4000,
                 )
             }
@@ -207,11 +208,13 @@ export default function VideoPlayer({
         const container = containerRef.current
         container?.addEventListener('mousemove', resetHideTimer)
         container?.addEventListener('keydown', resetHideTimer)
+        container?.addEventListener('touchstart', resetHideTimer)
 
         return () => {
             clearTimeout(hideTimeout.current)
             container?.removeEventListener('mousemove', resetHideTimer)
             container?.removeEventListener('keydown', resetHideTimer)
+            container?.removeEventListener('touchstart', resetHideTimer)
         }
     }, [fullscreen, playing])
 
@@ -259,13 +262,28 @@ export default function VideoPlayer({
     const shortcutsClassName = [
         'video-player-shortcuts',
         fullscreen && 'video-player-shortcuts-overlay',
-        fullscreen && !shortcutsVisible && 'video-player-shortcuts-hidden',
+        fullscreen && !uiVisible && 'video-player-shortcuts-hidden',
+    ]
+        .filter(Boolean)
+        .join(' ')
+
+    const controlsClassName = [
+        'video-player-controls',
+        fullscreen && 'video-player-controls-fullscreen',
+        fullscreen && !uiVisible && 'video-player-controls-hidden',
     ]
         .filter(Boolean)
         .join(' ')
 
     return (
-        <div ref={containerRef} className='video-player'>
+        <div
+            ref={containerRef}
+            className={
+                fullscreen
+                    ? 'video-player video-player-fullscreen'
+                    : 'video-player'
+            }
+        >
             <div className={shortcutsClassName}>
                 <ul className='video-player-shortcuts-list'>
                     {allShortcuts.map((shortcut) => (
@@ -288,13 +306,23 @@ export default function VideoPlayer({
                 </ul>
             </div>
 
-            <div className='video-player-media-wrap'>
+            <div
+                className={
+                    fullscreen
+                        ? 'video-player-media-wrap video-player-media-wrap-fullscreen'
+                        : 'video-player-media-wrap'
+                }
+            >
                 <video
                     ref={videoRef}
                     src={src}
                     autoPlay
                     onClick={togglePlay}
-                    className='video-player-media'
+                    className={
+                        fullscreen
+                            ? 'video-player-media video-player-media-fullscreen'
+                            : 'video-player-media video-player-media-inline'
+                    }
                 />
 
                 <AnimatePresence>
@@ -318,7 +346,7 @@ export default function VideoPlayer({
                 </AnimatePresence>
             </div>
 
-            <div className='video-player-controls'>
+            <div className={controlsClassName}>
                 <input
                     type='range'
                     min={0}

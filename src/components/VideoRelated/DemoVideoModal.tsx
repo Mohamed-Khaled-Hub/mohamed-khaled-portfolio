@@ -5,11 +5,11 @@ import { X } from 'lucide-react'
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 // Components
-import VideoPlayer from '@/src/components/PageRelated/VideoPlayer'
+import VideoPlayer from '@/src/components/VideoRelated/VideoPlayer'
 // Types
 import { DemoVideoModalProps } from '@/src/types/props.types'
 // Styles
-import '@/src/styles/components/PageRelated/DemoVideoModal.css'
+import '@/src/styles/components/VideoRelated/DemoVideoModal.css'
 
 export default function DemoVideoModal({
     src,

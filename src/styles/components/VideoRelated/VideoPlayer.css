@@ -4,12 +4,28 @@
     @apply relative w-full bg-c2;
 }
 
+.video-player-fullscreen {
+    @apply relative h-full w-full bg-c1;
+}
+
 .video-player-media-wrap {
     @apply relative;
 }
 
+.video-player-media-wrap-fullscreen {
+    @apply absolute inset-0 flex items-center justify-center bg-c1;
+}
+
 .video-player-media {
-    @apply aspect-video w-full cursor-pointer bg-c2;
+    @apply w-full cursor-pointer bg-c2;
+}
+
+.video-player-media-inline {
+    @apply aspect-video;
+}
+
+.video-player-media-fullscreen {
+    @apply h-full max-h-full w-full max-w-full object-contain;
 }
 
 .video-player-shortcuts {
@@ -54,6 +70,14 @@
 
 .video-player-controls {
     @apply space-y-2 border-t border-c3 bg-c1 px-4 py-3;
+}
+
+.video-player-controls-fullscreen {
+    @apply absolute inset-x-0 bottom-0 z-10 border-t-0 bg-c1/85 backdrop-blur transition-opacity duration-500;
+}
+
+.video-player-controls-hidden {
+    @apply pointer-events-none opacity-0;
 }
 
 .video-player-progress {

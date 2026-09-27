@@ -30,7 +30,7 @@ import SectionTitle from '@/src/components/PageRelated/SectionTitle'
 import PortfolioError from '@/src/components/UiRelated/PortfolioError'
 import PortfolioLoading from '@/src/components/UiRelated/PortfolioLoading'
 import ExperienceTimeline from '@/src/components/PageRelated/ExperienceTimeline'
-import DemoVideoModal from '@/src/components/PageRelated/DemoVideoModal'
+import DemoVideoModal from '@/src/components/VideoRelated/DemoVideoModal'
 import SectionNav from '@/src/components/PageRelated/SectionNav'
 // Constants
 import { LINK_LABELS, SKILL_LABELS } from '@/src/utils/helpers.constants'
