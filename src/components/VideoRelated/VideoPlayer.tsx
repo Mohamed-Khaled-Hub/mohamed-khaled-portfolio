@@ -4,6 +4,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
+    Loader2,
     Maximize,
     Minimize,
     Pause,
@@ -42,6 +43,7 @@ export default function VideoPlayer({
     const [fullscreen, setFullscreen] = useState(false)
     const [uiVisible, setUiVisible] = useState(true)
     const [feedback, setFeedback] = useState<Feedback | null>(null)
+    const [loading, setLoading] = useState(true)
 
     const allShortcuts = [...SHORTCUTS, ...extraShortcuts]
 
@@ -75,17 +77,29 @@ export default function VideoPlayer({
         const onLoadedMetadata = () => setDuration(video.duration)
         const onPlay = () => setPlaying(true)
         const onPause = () => setPlaying(false)
+        const onWaiting = () => setLoading(true)
+        const onCanPlay = () => setLoading(false)
+        const onSeeking = () => setLoading(true)
+        const onSeeked = () => setLoading(false)
 
         video.addEventListener('timeupdate', onTimeUpdate)
         video.addEventListener('loadedmetadata', onLoadedMetadata)
         video.addEventListener('play', onPlay)
         video.addEventListener('pause', onPause)
+        video.addEventListener('waiting', onWaiting)
+        video.addEventListener('canplay', onCanPlay)
+        video.addEventListener('seeking', onSeeking)
+        video.addEventListener('seeked', onSeeked)
 
         return () => {
             video.removeEventListener('timeupdate', onTimeUpdate)
             video.removeEventListener('loadedmetadata', onLoadedMetadata)
             video.removeEventListener('play', onPlay)
             video.removeEventListener('pause', onPause)
+            video.removeEventListener('waiting', onWaiting)
+            video.removeEventListener('canplay', onCanPlay)
+            video.removeEventListener('seeking', onSeeking)
+            video.removeEventListener('seeked', onSeeked)
         }
     }, [fullscreen, updateProgressFill])
 
@@ -371,6 +385,24 @@ export default function VideoPlayer({
                             <span className='video-player-feedback-badge'>
                                 {renderFeedbackIcon()}
                             </span>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {loading && (
+                        <motion.div
+                            className='video-player-loading'
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <Loader2
+                                size={32}
+                                className='video-player-spinner'
+                                aria-hidden
+                            />
                         </motion.div>
                     )}
                 </AnimatePresence>

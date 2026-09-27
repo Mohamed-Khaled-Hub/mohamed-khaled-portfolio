@@ -107,3 +107,11 @@
 .video-player-volume {
     @apply h-1 w-20 cursor-pointer appearance-none rounded-full bg-c3 accent-c5;
 }
+
+.video-player-loading {
+    @apply pointer-events-none absolute inset-0 flex items-center justify-center;
+}
+
+.video-player-spinner {
+    @apply animate-spin text-c5;
+}
