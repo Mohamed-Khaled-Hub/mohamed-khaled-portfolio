@@ -164,7 +164,7 @@ export default function Home() {
                                         src='https://res.cloudinary.com/jwllq2cg/image/upload/v1790626285/mohamed-khaled-img.jpg'
                                         alt={personal.name}
                                         fill
-                                        loading='lazy'
+                                        loading='eager'
                                         sizes='(min-width: 1024px) 45vw, 90vw'
                                         className='home-hero-image'
                                     />
