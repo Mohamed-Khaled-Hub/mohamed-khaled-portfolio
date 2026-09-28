@@ -115,3 +115,7 @@
 .video-player-spinner {
     @apply animate-spin text-c5;
 }
+
+.video-player-error {
+    @apply pointer-events-none absolute inset-0 flex items-center justify-center bg-c1/90 text-sm text-c4;
+}

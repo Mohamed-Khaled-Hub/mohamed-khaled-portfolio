@@ -2,7 +2,6 @@
 
 // Core
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState } from 'react'
 import {
     Mail,
@@ -25,6 +24,7 @@ import {
 // Components
 import Chip from '@/src/components/PageRelated/Chip'
 import Reveal from '@/src/components/PageRelated/Reveal'
+import CdnImage from '@/src/components/PageRelated/CdnImage'
 import ExternalLink from '@/src/components/PageRelated/ExternalLink'
 import SectionTitle from '@/src/components/PageRelated/SectionTitle'
 import PortfolioError from '@/src/components/UiRelated/PortfolioError'
@@ -160,11 +160,11 @@ export default function Home() {
                                 }}
                             >
                                 <div className='home-hero-image-frame'>
-                                    <Image
-                                        src='/mohamed-khaled-img.jpeg'
+                                    <CdnImage
+                                        src='https://res.cloudinary.com/jwllq2cg/image/upload/v1790621187/mohamed-khaled-img.jpg'
                                         alt={personal.name}
                                         fill
-                                        priority
+                                        loading='lazy'
                                         sizes='(min-width: 1024px) 45vw, 90vw'
                                         className='home-hero-image'
                                     />

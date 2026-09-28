@@ -1,0 +1,13 @@
+@import '../../globals.css';
+
+.cdn-image-skeleton {
+    @apply absolute inset-0 animate-pulse bg-c3;
+}
+
+.cdn-image-hidden {
+    @apply opacity-0;
+}
+
+.cdn-image-fallback {
+    @apply absolute inset-0 flex items-center justify-center bg-c2 text-c4;
+}

@@ -44,6 +44,8 @@ export default function VideoPlayer({
     const [uiVisible, setUiVisible] = useState(true)
     const [feedback, setFeedback] = useState<Feedback | null>(null)
     const [loading, setLoading] = useState(true)
+    const [retryAttempt, setRetryAttempt] = useState(0)
+    const [failed, setFailed] = useState(false)
 
     const allShortcuts = [...SHORTCUTS, ...extraShortcuts]
 
@@ -81,6 +83,16 @@ export default function VideoPlayer({
         const onCanPlay = () => setLoading(false)
         const onSeeking = () => setLoading(true)
         const onSeeked = () => setLoading(false)
+        const onError = () => {
+            if (retryAttempt < 3) {
+                setTimeout(() => {
+                    setRetryAttempt((prev) => prev + 1)
+                }, 1000)
+            } else {
+                setFailed(true)
+                setLoading(false)
+            }
+        }
 
         video.addEventListener('timeupdate', onTimeUpdate)
         video.addEventListener('loadedmetadata', onLoadedMetadata)
@@ -90,6 +102,7 @@ export default function VideoPlayer({
         video.addEventListener('canplay', onCanPlay)
         video.addEventListener('seeking', onSeeking)
         video.addEventListener('seeked', onSeeked)
+        video.addEventListener('error', onError)
 
         return () => {
             video.removeEventListener('timeupdate', onTimeUpdate)
@@ -100,8 +113,9 @@ export default function VideoPlayer({
             video.removeEventListener('canplay', onCanPlay)
             video.removeEventListener('seeking', onSeeking)
             video.removeEventListener('seeked', onSeeked)
+            video.removeEventListener('error', onError)
         }
-    }, [fullscreen, updateProgressFill])
+    }, [fullscreen, updateProgressFill, retryAttempt])
 
     // Track native fullscreen state
     useEffect(() => {
@@ -319,6 +333,11 @@ export default function VideoPlayer({
         .filter(Boolean)
         .join(' ')
 
+    const retriedSrc =
+        retryAttempt > 0
+            ? `${src}${src.includes('?') ? '&' : '?'}retry=${retryAttempt}`
+            : src
+
     return (
         <div
             ref={containerRef}
@@ -359,7 +378,7 @@ export default function VideoPlayer({
             >
                 <video
                     ref={videoRef}
-                    src={src}
+                    src={retriedSrc}
                     autoPlay
                     onClick={togglePlay}
                     className={
@@ -403,6 +422,20 @@ export default function VideoPlayer({
                                 className='video-player-spinner'
                                 aria-hidden
                             />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {failed && (
+                        <motion.div
+                            className='video-player-error'
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <span>Video failed to load</span>
                         </motion.div>
                     )}
                 </AnimatePresence>

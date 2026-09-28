@@ -1,4 +1,5 @@
 // Core
+import type { ImageProps } from 'next/image'
 import type { PropsWithChildren } from 'react'
 // Types
 import { Shortcut } from '@/src/types/ui.types'
@@ -33,4 +34,8 @@ export type DemoVideoModalProps = {
 export type VideoPlayerProps = {
     src: string
     extraShortcuts?: Shortcut[]
+}
+
+export type CdnImageProps = Omit<ImageProps, 'onError' | 'onLoad'> & {
+    maxRetries?: number
 }
