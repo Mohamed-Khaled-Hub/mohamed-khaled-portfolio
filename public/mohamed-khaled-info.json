@@ -31,6 +31,7 @@
             "startDate": "2026-05",
             "endDate": "2026-08",
             "location": "Remote",
+            "demoVideo": "https://res.cloudinary.com/jwllq2cg/video/upload/v1790626071/clinova.mp4",
             "description": [
                 "Led client meetings with clinic staff to turn user requirements into technical specifications and a phased delivery plan for 13 modules.",
                 "Developed a clinic management platform with NestJS, Next.js, TypeScript, and MongoDB, designing and documenting 50+ RESTful endpoints and 9 Mongoose schemas in Swagger/OpenAPI.",

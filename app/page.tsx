@@ -161,7 +161,7 @@ export default function Home() {
                             >
                                 <div className='home-hero-image-frame'>
                                     <CdnImage
-                                        src='https://res.cloudinary.com/jwllq2cg/image/upload/v1790621187/mohamed-khaled-img.jpg'
+                                        src='https://res.cloudinary.com/jwllq2cg/image/upload/v1790626285/mohamed-khaled-img.jpg'
                                         alt={personal.name}
                                         fill
                                         loading='lazy'
