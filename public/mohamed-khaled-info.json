@@ -145,24 +145,6 @@
                 "Built a RESTful NestJS API with 14 endpoints and DTO validation, covered by Jest unit and integration tests.",
                 "Created a 4-stage MongoDB aggregation pipeline ranking restaurants by cuisine, ratings, and popularity, with 2dsphere location search."
             ]
-        },
-        {
-            "name": "Portfolio Website",
-            "subtitle": "Personal Portfolio Website",
-            "technologies": [
-                "Next.js",
-                "TypeScript",
-                "Tailwind CSS",
-                "Framer Motion"
-            ],
-            "links": {
-                "liveDemo": "https://mohamed-khaled-portfolio-eta.vercel.app/",
-                "github": "https://github.com/Mohamed-Khaled-Hub/mohamed-khaled-portfolio"
-            },
-            "description": [
-                "Built a responsive personal portfolio website, serving portfolio data through a custom Next.js API route and rendering 6 sections with reusable React components.",
-                "Developed a custom HTML5 video player component with Framer Motion animations, implementing 8 keyboard shortcuts, real-time UI feedback, and a fullscreen mode with responsive cross-device layout."
-            ]
         }
     ],
 

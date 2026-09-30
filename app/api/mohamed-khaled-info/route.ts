@@ -6,18 +6,21 @@ import { NextResponse } from 'next/server'
 import { PortfolioData } from '@/src/types/portfolio.types'
 import { PortfolioDataResponse } from '@/src/types/api.types'
 
+// Portfolio JSON path
+const filePath = path.join(process.cwd(), 'public', 'mohamed-khaled-info.json')
+
+// Portfolio Object
+let portfolioData: PortfolioData | null = null
+
+// GET /api/mohamed-khaled-info
 export async function GET(): Promise<NextResponse<PortfolioDataResponse>> {
     try {
-        const filePath = path.join(
-            process.cwd(),
-            'public',
-            'mohamed-khaled-info.json',
-        )
+        if (!portfolioData) {
+            const file = await fs.readFile(filePath, 'utf-8')
+            portfolioData = JSON.parse(file) as PortfolioData
+        }
 
-        const file = await fs.readFile(filePath, 'utf-8')
-        const data = JSON.parse(file) as PortfolioData
-
-        return NextResponse.json(data)
+        return NextResponse.json(portfolioData)
     } catch (error) {
         console.error('Failed to read portfolio data:', error)
 

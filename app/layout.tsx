@@ -14,18 +14,6 @@ export const metadata: Metadata = {
     title: 'Mohamed Khaled | Full Stack Developer & Software Engineer',
     description:
         'Full Stack Developer and Software Engineer specializing in Next.js, React, NestJS, TypeScript, and scalable web architectures. Explore my portfolio, projects, and backend systems.',
-    keywords: [
-        'Mohamed Khaled',
-        'Full Stack Developer',
-        'Software Engineer',
-        'Next.js Portfolio',
-        'React Developer',
-        'NestJS',
-        'TypeScript',
-        'Node.js',
-        'MongoDB',
-        'Web Development',
-    ],
     authors: [{ name: 'Mohamed Khaled' }],
     creator: 'Mohamed Khaled',
     openGraph: {
@@ -37,11 +25,17 @@ export const metadata: Metadata = {
         locale: 'en_US',
         type: 'website',
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Mohamed Khaled | Full Stack Developer & Software Engineer',
+        description:
+            'Full Stack Developer specializing in Next.js, NestJS, TypeScript, and AI-driven web applications.',
+    },
 }
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
     return (
-        <html lang='en' className={`${mainFont.className}`}>
+        <html lang='en' className={mainFont.className}>
             <body>
                 <GradientBgAnimation>
                     <PortfolioProvider>{children}</PortfolioProvider>
