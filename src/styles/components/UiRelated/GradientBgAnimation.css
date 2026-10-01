@@ -1,4 +1,4 @@
-@import '../../globals.css';
+@reference '../../globals.css';
 
 .gradient-bg {
     @apply relative isolate flex min-h-full flex-1 flex-col bg-c1 text-c5 selection:bg-c5 selection:text-c1;

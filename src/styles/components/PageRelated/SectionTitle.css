@@ -1,4 +1,4 @@
-@import '../../globals.css';
+@reference '../../globals.css';
 
 .section-title {
     @apply mb-10 text-3xl font-semibold tracking-tight text-c5 sm:text-4xl;

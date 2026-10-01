@@ -3,15 +3,7 @@ import type { ImageProps } from 'next/image'
 import type { PropsWithChildren } from 'react'
 // Types
 import { Shortcut } from '@/src/types/ui.types'
-
-export type PortfolioLoadingProps = {
-    message?: string
-}
-
-export type PortfolioErrorProps = {
-    message?: string
-    onRetryAction?: () => void
-}
+import { PortfolioData } from '@/src/types/portfolio.types'
 
 export type RevealProps = PropsWithChildren & {
     as?: 'div' | 'article' | 'li' | 'section'
@@ -38,4 +30,9 @@ export type VideoPlayerProps = {
 
 export type CdnImageProps = Omit<ImageProps, 'onError' | 'onLoad'> & {
     maxRetries?: number
+}
+
+export type HeroSectionProps = {
+    personal: PortfolioData['personal']
+    summary: string
 }

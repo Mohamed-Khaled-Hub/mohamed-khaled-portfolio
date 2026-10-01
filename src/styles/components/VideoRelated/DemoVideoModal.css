@@ -1,4 +1,4 @@
-@import '../../globals.css';
+@reference '../../globals.css';
 
 .demo-video-modal-backdrop {
     @apply fixed inset-0 z-50 flex items-center justify-center bg-c1/70 p-4;

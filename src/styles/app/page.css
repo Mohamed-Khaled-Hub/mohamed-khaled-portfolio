@@ -1,4 +1,4 @@
-@import '../globals.css';
+@reference '../globals.css';
 
 .home-page {
     @apply text-c5;
@@ -6,67 +6,6 @@
 
 .home-content {
     @apply mx-auto max-w-6xl space-y-28 px-6 py-24;
-}
-
-.home-section-scroll-margin {
-    @apply scroll-mt-10;
-}
-
-.home-hero-inner {
-    @apply mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-24 sm:pt-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16;
-}
-
-.home-hero-text {
-    @apply min-w-0;
-}
-
-.home-hero-media {
-    @apply mx-auto w-full max-w-md lg:max-w-none;
-}
-
-.home-hero-image-float {
-    @apply relative before:absolute before:inset-0 before:translate-x-4 before:translate-y-4 before:rounded-3xl before:border before:border-c3;
-}
-
-.home-hero-image-frame {
-    @apply relative aspect-[4/5] overflow-hidden rounded-3xl border border-c3;
-}
-
-.home-hero-image {
-    @apply object-cover;
-}
-
-.home-hero-location {
-    @apply mb-6 flex items-center gap-2 text-base text-c4;
-}
-
-.home-hero-name {
-    @apply max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight text-c5 sm:text-7xl;
-}
-
-.home-hero-title {
-    @apply mt-5 text-xl text-c4 sm:text-2xl;
-}
-
-.home-hero-summary {
-    @apply mt-8 max-w-2xl text-lg leading-relaxed text-c4;
-}
-
-.home-hero-actions {
-    @apply mt-10 flex flex-wrap items-center gap-3;
-}
-
-.home-hero-button-primary,
-.home-hero-button-secondary {
-    @apply inline-flex items-center gap-2 rounded-lg px-5 py-3 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c5;
-}
-
-.home-hero-button-primary {
-    @apply bg-c5 text-c1 hover:bg-c4;
-}
-
-.home-hero-button-secondary {
-    @apply border border-c3 text-c5 hover:border-c4;
 }
 
 .home-education-list {
@@ -131,10 +70,6 @@
 
 .home-project-links {
     @apply mt-4 flex flex-col items-start gap-2;
-}
-
-.home-project-demo {
-    @apply mt-2 cursor-pointer inline-flex items-center gap-1.5 text-sm font-medium text-c5 underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c5;
 }
 
 .home-project-bullets {

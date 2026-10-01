@@ -20,3 +20,5 @@ export type Feedback = {
     type: FeedbackType
     value?: number
 }
+
+export type CdnImageStatus = 'loading' | 'retrying' | 'loaded' | 'failed'

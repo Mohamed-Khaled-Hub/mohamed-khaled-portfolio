@@ -1,12 +1,11 @@
 'use client'
 
 // Core
-import { useRef, useState } from 'react'
-import { Video } from 'lucide-react'
+import { useRef } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 // Components
 import Reveal from '@/src/components/PageRelated/Reveal'
-import DemoVideoModal from '@/src/components/VideoRelated/DemoVideoModal'
+import DemoButton from '@/src/components/VideoRelated/DemoButton'
 // Functions
 import { formatDate } from '@/src/utils/helpers.functions'
 // Types
@@ -19,8 +18,6 @@ export default function ExperienceTimeline({
 }: {
     experience: PortfolioData['experience']
 }) {
-    const [activeVideo, setActiveVideo] = useState<string | null>(null)
-
     const timelineRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
         target: timelineRef,
@@ -69,16 +66,7 @@ export default function ExperienceTimeline({
                                 <span>{job.location}</span>
                             </p>
                             {job.demoVideo && (
-                                <button
-                                    type='button'
-                                    onClick={() =>
-                                        setActiveVideo(job.demoVideo!)
-                                    }
-                                    className='experience-timeline-demo'
-                                >
-                                    <Video size={14} aria-hidden />
-                                    Watch demo
-                                </button>
+                                <DemoButton src={job.demoVideo} />
                             )}
                             <ul className='experience-timeline-bullets'>
                                 {job.description.map((line) => (
@@ -89,11 +77,6 @@ export default function ExperienceTimeline({
                     ))}
                 </ol>
             </div>
-
-            <DemoVideoModal
-                src={activeVideo}
-                onCloseAction={() => setActiveVideo(null)}
-            />
         </>
     )
 }

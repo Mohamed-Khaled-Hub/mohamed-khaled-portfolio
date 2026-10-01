@@ -1,30 +1,38 @@
 'use client'
 
 // Core
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { ImageOff } from 'lucide-react'
 // Types
 import { CdnImageProps } from '@/src/types/props.types'
+import { CdnImageStatus } from '@/src/types/ui.types'
 // Styles
 import '@/src/styles/components/PageRelated/CdnImage.css'
 
 export default function CdnImage({
     src,
+    alt,
     maxRetries = 3,
     className,
     ...rest
 }: CdnImageProps) {
-    const [status, setStatus] = useState<'loading' | 'loaded' | 'failed'>(
-        'loading',
-    )
+    const [status, setStatus] = useState<CdnImageStatus>('loading')
     const [attempt, setAttempt] = useState(0)
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+    // Clear a pending retry if the component unmounts
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current)
+        }
+    }, [])
 
     const handleError = () => {
         if (attempt < maxRetries) {
-            setTimeout(() => {
+            setStatus('retrying')
+            timeoutRef.current = setTimeout(() => {
                 setAttempt((prev) => prev + 1)
-                setStatus('loading')
             }, 1000)
         } else {
             setStatus('failed')
@@ -33,7 +41,7 @@ export default function CdnImage({
 
     if (status === 'failed') {
         return (
-            <div className='cdn-image-fallback'>
+            <div className='cdn-image-fallback' role='img' aria-label={alt}>
                 <ImageOff size={28} aria-hidden />
             </div>
         )
@@ -44,20 +52,22 @@ export default function CdnImage({
             ? `${src}${src.includes('?') ? '&' : '?'}retry=${attempt}`
             : src
 
+    const showSkeleton = status === 'loading' || status === 'retrying'
+
     return (
         <>
-            {status === 'loading' && (
-                <div className='cdn-image-skeleton' aria-hidden />
-            )}
-            {/* eslint-disable-next-line jsx-a11y/alt-text */}
+            {showSkeleton && <div className='cdn-image-skeleton' aria-hidden />}
             <Image
                 key={attempt}
                 src={retriedSrc}
+                alt={alt}
                 onLoad={() => setStatus('loaded')}
                 onError={handleError}
-                className={`${className ?? ''} ${
-                    status === 'loading' ? 'cdn-image-hidden' : ''
-                }`}
+                className={
+                    status === 'retrying'
+                        ? `${className ?? ''} cdn-image-hidden`.trim()
+                        : className
+                }
                 {...rest}
             />
         </>

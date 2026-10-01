@@ -1,4 +1,4 @@
-@import '../../globals.css';
+@reference '../../globals.css';
 
 .cdn-image-skeleton {
     @apply absolute inset-0 animate-pulse bg-c3;
