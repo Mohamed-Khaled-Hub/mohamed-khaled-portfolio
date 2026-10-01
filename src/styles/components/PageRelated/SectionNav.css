@@ -4,6 +4,10 @@
     @apply fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2;
 }
 
+.section-nav-actions {
+    @apply flex items-center gap-2;
+}
+
 .section-nav-toggle {
     @apply flex cursor-pointer items-center justify-center rounded-full border border-c3 bg-c1 p-2 text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
 }
@@ -12,10 +16,33 @@
     @apply flex cursor-pointer items-center gap-2 rounded-full border border-c3 bg-c1 p-2 text-sm font-medium text-c5 transition-colors hover:border-c4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5;
 }
 
+.section-nav-arrow {
+    @apply transition-transform duration-300 ease-[cubic-bezier(0.33,1,0.68,1)] motion-reduce:transition-none;
+}
+
+.section-nav-arrow-down {
+    @apply rotate-180;
+}
+
 .section-nav-list {
-    @apply flex flex-col items-stretch gap-1 rounded-2xl border border-c3 bg-c1 p-2;
+    @apply invisible flex translate-y-2 flex-col items-stretch gap-1 rounded-2xl border border-c3 bg-c1 p-2 opacity-0 transition-[opacity,translate,visibility] duration-200 ease-[cubic-bezier(0.33,1,0.68,1)] motion-reduce:translate-y-0 motion-reduce:transition-none;
+}
+
+.section-nav-list[data-open='true'] {
+    @apply visible translate-y-0 opacity-100;
+}
+
+.section-nav-entry {
+    --index: 0;
+
+    @apply translate-y-1 opacity-0 transition-[opacity,translate] duration-200 ease-[cubic-bezier(0.33,1,0.68,1)] motion-reduce:translate-y-0 motion-reduce:transition-none;
+}
+
+.section-nav-list[data-open='true'] .section-nav-entry {
+    @apply translate-y-0 opacity-100;
+    transition-delay: calc(var(--index) * 40ms);
 }
 
 .section-nav-item {
-    @apply w-full cursor-pointer text-left rounded-lg px-3 py-1.5 text-sm text-c4 transition-colors hover:text-c5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5 aria-[current=true]:bg-c2 aria-[current=true]:text-c5;
+    @apply w-full cursor-pointer rounded-lg px-3 py-1.5 text-left text-sm text-c4 transition-colors hover:text-c5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c5 aria-[current=true]:bg-c2 aria-[current=true]:text-c5;
 }

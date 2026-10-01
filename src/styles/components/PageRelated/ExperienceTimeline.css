@@ -4,19 +4,6 @@
     @apply relative pl-8 sm:pl-10;
 }
 
-.experience-timeline-track,
-.experience-timeline-progress {
-    @apply absolute bottom-0 left-[6px] top-2 w-px;
-}
-
-.experience-timeline-track {
-    @apply bg-c3;
-}
-
-.experience-timeline-progress {
-    @apply origin-top bg-c5;
-}
-
 .experience-timeline-list {
     @apply space-y-14;
 }

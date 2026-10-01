@@ -1,10 +1,10 @@
 // Core
 import { MapPin, Languages, ShieldCheck, GraduationCap } from 'lucide-react'
 // Components
-import Chip from '@/src/components/PageRelated/Chip'
-import Reveal from '@/src/components/PageRelated/Reveal'
-import ExternalLink from '@/src/components/PageRelated/ExternalLink'
-import SectionTitle from '@/src/components/PageRelated/SectionTitle'
+import Chip from '@/src/components/UiRelated/Chip'
+import Reveal from '@/src/components/UiRelated/Reveal'
+import ExternalLink from '@/src/components/UiRelated/ExternalLink'
+import SectionTitle from '@/src/components/UiRelated/SectionTitle'
 import ExperienceTimeline from '@/src/components/PageRelated/ExperienceTimeline'
 import SectionNav from '@/src/components/PageRelated/SectionNav'
 import HeroSection from '@/src/components/PageRelated/HeroSection'

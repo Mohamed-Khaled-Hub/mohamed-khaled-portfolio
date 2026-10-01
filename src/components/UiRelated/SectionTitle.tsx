@@ -1,7 +1,7 @@
 // Core
 import { ComponentProps } from 'react'
 // Style
-import '@/src/styles/components/PageRelated/SectionTitle.css'
+import '@/src/styles/components/UiRelated/SectionTitle.css'
 
 export default function SectionTitle({
     children,

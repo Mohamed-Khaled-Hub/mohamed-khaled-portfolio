@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 // Types
 import { ExternalLinkProps } from '@/src/types/props.types'
 // Style
-import '@/src/styles/components/PageRelated/ExternalLink.css'
+import '@/src/styles/components/UiRelated/ExternalLink.css'
 
 export default function ExternalLink({
     href,

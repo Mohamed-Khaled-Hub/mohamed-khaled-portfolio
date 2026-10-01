@@ -1,14 +1,14 @@
 'use client'
 
 // Core
-import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { ImageOff } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 // Types
 import { CdnImageProps } from '@/src/types/props.types'
 import { CdnImageStatus } from '@/src/types/ui.types'
 // Styles
-import '@/src/styles/components/PageRelated/CdnImage.css'
+import '@/src/styles/components/UiRelated/CdnImage.css'
 
 export default function CdnImage({
     src,
@@ -21,7 +21,6 @@ export default function CdnImage({
     const [attempt, setAttempt] = useState(0)
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-    // Clear a pending retry if the component unmounts
     useEffect(() => {
         return () => {
             if (timeoutRef.current) clearTimeout(timeoutRef.current)

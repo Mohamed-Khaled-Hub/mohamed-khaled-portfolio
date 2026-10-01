@@ -1,11 +1,7 @@
-'use client'
-
-// Core
-import { useRef } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
 // Components
-import Reveal from '@/src/components/PageRelated/Reveal'
+import Reveal from '@/src/components/UiRelated/Reveal'
 import DemoButton from '@/src/components/VideoRelated/DemoButton'
+import TimelineProgress from '@/src/components/UiRelated/TimelineProgress'
 // Functions
 import { formatDate } from '@/src/utils/helpers.functions'
 // Types
@@ -18,31 +14,17 @@ export default function ExperienceTimeline({
 }: {
     experience: PortfolioData['experience']
 }) {
-    const timelineRef = useRef<HTMLDivElement>(null)
-    const { scrollYProgress } = useScroll({
-        target: timelineRef,
-        offset: ['start 65%', 'end 60%'],
-    })
-    const lineScale = useSpring(scrollYProgress, {
-        stiffness: 120,
-        damping: 30,
-        mass: 0.4,
-    })
-
     return (
-        <>
-            <div ref={timelineRef} className='experience-timeline'>
-                <div className='experience-timeline-track' aria-hidden />
-                <motion.div
-                    className='experience-timeline-progress'
-                    style={{ scaleY: lineScale }}
-                    aria-hidden
-                />
-                <ol className='experience-timeline-list'>
-                    {experience.map((job) => (
+        <div className='experience-timeline'>
+            <TimelineProgress />
+            <ol className='experience-timeline-list'>
+                {experience.map((job) => {
+                    const jobKey = `${job.company}-${job.startDate}`
+
+                    return (
                         <Reveal
                             as='li'
-                            key={`${job.company}-${job.startDate}`}
+                            key={jobKey}
                             className='experience-timeline-item'
                         >
                             <span
@@ -69,14 +51,14 @@ export default function ExperienceTimeline({
                                 <DemoButton src={job.demoVideo} />
                             )}
                             <ul className='experience-timeline-bullets'>
-                                {job.description.map((line) => (
-                                    <li key={line}>{line}</li>
+                                {job.description.map((line, index) => (
+                                    <li key={`${jobKey}-${index}`}>{line}</li>
                                 ))}
                             </ul>
                         </Reveal>
-                    ))}
-                </ol>
-            </div>
-        </>
+                    )
+                })}
+            </ol>
+        </div>
     )
 }

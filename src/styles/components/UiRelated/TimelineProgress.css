@@ -1,0 +1,14 @@
+@reference '../../globals.css';
+
+.timeline-track,
+.timeline-progress {
+    @apply absolute bottom-0 left-[6px] top-2 w-px;
+}
+
+.timeline-track {
+    @apply bg-c3;
+}
+
+.timeline-progress {
+    @apply origin-top bg-c5 will-change-transform;
+}

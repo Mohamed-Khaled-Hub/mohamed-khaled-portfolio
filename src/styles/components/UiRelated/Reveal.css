@@ -1,0 +1,12 @@
+@reference '../../globals.css';
+
+.reveal {
+    --reveal-duration: 1.1s;
+    --reveal-delay: 0s;
+
+    @apply translate-y-8 opacity-0 transition-[opacity,translate] duration-(--reveal-duration) delay-(--reveal-delay) ease-[cubic-bezier(0.33,1,0.68,1)] motion-reduce:translate-y-0 motion-reduce:duration-300;
+}
+
+.reveal[data-visible='true'] {
+    @apply translate-y-0 opacity-100;
+}
