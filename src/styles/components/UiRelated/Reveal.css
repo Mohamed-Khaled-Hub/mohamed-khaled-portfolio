@@ -8,5 +8,5 @@
 }
 
 .reveal[data-visible='true'] {
-    @apply translate-y-0 opacity-100;
+    @apply opacity-100 translate-none;
 }

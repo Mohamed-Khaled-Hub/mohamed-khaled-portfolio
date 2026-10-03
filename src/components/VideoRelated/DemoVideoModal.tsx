@@ -3,6 +3,7 @@
 // Core
 import { X } from 'lucide-react'
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 // Components
 import VideoPlayer from '@/src/components/VideoRelated/VideoPlayer'
@@ -34,7 +35,7 @@ export default function DemoVideoModal({
         }
     }, [src, onCloseAction])
 
-    return (
+    return createPortal(
         <AnimatePresence>
             {src && (
                 <motion.div
@@ -75,6 +76,7 @@ export default function DemoVideoModal({
                     </motion.div>
                 </motion.div>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body,
     )
 }
